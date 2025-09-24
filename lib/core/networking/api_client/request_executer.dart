@@ -1,10 +1,20 @@
 import 'dart:developer';
+import 'package:base_project/core/config/api_config.dart';
+import 'package:base_project/core/get_it/injection.dart';
 import 'package:base_project/core/networking/api_client/request_strategy.dart';
 import 'package:base_project/core/networking/api_result/api_result.dart';
+import 'package:base_project/core/networking/dio_helper/dio_helper.dart';
 import 'package:base_project/core/networking/error_handle/error_parser.dart';
 import 'package:dio/dio.dart';
-
-
+import 'package:injectable/injectable.dart';
+@module
+abstract class RegisterModule {
+  @lazySingleton
+  Dio dio(ApiConfiguration config) {
+    return getIt<DioHelper>().getDio();
+  }
+}
+@lazySingleton
 class RequestExecutor {
   final Dio dio;
   final ErrorParser errorParser;

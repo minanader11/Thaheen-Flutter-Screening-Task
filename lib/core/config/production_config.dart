@@ -1,5 +1,7 @@
-import 'api_config.dart';
+import 'package:injectable/injectable.dart';
 
+import 'api_config.dart';
+@LazySingleton(as: ApiConfiguration, env: [Environment.prod])
 class ProductionApiConfiguration extends ApiConfiguration {
   @override
   String get baseUrl => "https://prod-base";

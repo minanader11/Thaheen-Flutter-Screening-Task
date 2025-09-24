@@ -5,7 +5,9 @@ import 'package:base_project/core/config/api_config.dart';
 import 'package:base_project/core/constants/cache_keys.dart';
 import 'package:base_project/core/local_storage/secure_storage.dart';
 import 'package:base_project/core/networking/refresh_token_handler/refresh_token_hanlder.dart';
-
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+@LazySingleton(as: RefreshTokenHandler)
 class RefreshTokenHandlerImpl implements RefreshTokenHandler {
   final ApiConfiguration config;
 

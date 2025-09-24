@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:base_project/core/localization/generated/l10n.dart';
 import 'package:base_project/core/networking/error_handle/error_handler_entity.dart';
 import 'package:base_project/core/networking/error_handle/error_parser.dart';
-
+import 'package:injectable/injectable.dart';
+@LazySingleton(as: ErrorParser)
 class DioErrorParser implements ErrorParser {
   @override
   ErrorHandler parse(Object error) {

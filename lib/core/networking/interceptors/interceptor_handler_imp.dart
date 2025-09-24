@@ -1,17 +1,21 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:base_project/core/config/api_config.dart';
+import 'package:base_project/core/get_it/injection.dart';
+import 'package:base_project/core/networking/refresh_token_handler/refresh_token_handler_impl.dart';
+import 'package:base_project/core/networking/refresh_token_handler/refresh_token_hanlder.dart';
 import 'package:dio/dio.dart';
 import 'package:base_project/core/constants/cache_keys.dart';
 import 'package:base_project/core/local_storage/secure_storage.dart';
 import 'package:base_project/core/networking/interceptors/interceptor_handler.dart';
-import 'package:base_project/core/networking/refresh_token_handler/refresh_token_handler_impl.dart';
-
+import 'package:injectable/injectable.dart';
+@LazySingleton(as: InterceptorsHandler)
 class InterceptorHandlerImp extends InterceptorsHandler {
-  final RefreshTokenHandlerImpl refreshTokenHandler;
+  final RefreshTokenHandlerImpl refreshTokenHandler=RefreshTokenHandlerImpl(getIt<ApiConfiguration>());
 
   Completer<String?>? _refreshCompleter;
 
-  InterceptorHandlerImp(this.refreshTokenHandler);
+  InterceptorHandlerImp();
 
   //====================== onRequest =========================
   @override

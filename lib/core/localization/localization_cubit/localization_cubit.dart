@@ -6,11 +6,12 @@ import 'package:base_project/core/local_storage/cache_helper.dart';
 import 'package:bloc/bloc.dart';
 
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../constants/localization.dart';
 
 part 'localization_state.dart';
-
+@LazySingleton()
 class LocalizationCubit extends Cubit<LocalizationState> {
   LocalizationCubit()
       : super(const LocalizationState(

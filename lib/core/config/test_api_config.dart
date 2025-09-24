@@ -1,8 +1,11 @@
+import 'package:injectable/injectable.dart';
+
 import 'api_config.dart';
 
+@LazySingleton(as: ApiConfiguration, env: [Environment.test])
 class TestApiConfiguration extends ApiConfiguration {
   @override
-  String get baseUrl => "https://test-base";
+  String get baseUrl => "https://jsonplaceholder.typicode.com";
 
   // Uncomment and implement the below lines if Microsoft authentication is needed
   @override

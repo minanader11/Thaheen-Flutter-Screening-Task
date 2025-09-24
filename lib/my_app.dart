@@ -1,6 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'dart:developer';
+
+import 'package:base_project/core/config/api_config.dart';
 import 'package:base_project/core/get_it/dependecy_injection.dart';
+import 'package:base_project/core/get_it/injection.dart';
 import 'package:base_project/core/localization/localization_cubit/localization_cubit.dart';
 import 'package:base_project/core/routing/routes.dart';
 import 'package:base_project/core/services/app_life_cycle/app_life_cycle.dart';
@@ -23,11 +27,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final config = getIt<ApiConfiguration>();
+    log("============ Base URL: ${config.baseUrl} ==============");
+    sendRequest();
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => getIt<ConnectivityCubit>()..initialize(),
-        ),
         BlocProvider(
           create: (context) => getIt<LocalizationCubit>()..getSavedLanguage(),
         ),
@@ -53,7 +57,7 @@ class MyApp extends StatelessWidget {
                     fontFamily: TextStyles.fontFamily,
                     scaffoldBackgroundColor: ColorManager.white
                   ),
-                  navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+               //   navigatorKey: getIttt<GlobalKey<NavigatorState>>(),
                   debugShowCheckedModeBanner: false,
                   locale: state.locale,
                   supportedLocales: S.delegate.supportedLocales,
@@ -63,17 +67,17 @@ class MyApp extends StatelessWidget {
                     GlobalCupertinoLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
                   ],
-                  builder: (context, child) {
-                    return AppLifecycleWrapper(
-                      child: MediaQuery(
-                        data: MediaQuery.of(context).copyWith(
-                          textScaler:
-                              const TextScaler.linear(1.0), // lock font scaling
-                        ),
-                        child: child!,
-                      ),
-                    );
-                  },
+                  // builder: (context, child) {
+                  //   return AppLifecycleWrapper(
+                  //     child: MediaQuery(
+                  //       data: MediaQuery.of(context).copyWith(
+                  //         textScaler:
+                  //             const TextScaler.linear(1.0), // lock font scaling
+                  //       ),
+                  //       child: child!,
+                  //     ),
+                  //   );
+                  // },
                //  initialRoute: Routes.onboarding,
                   home: MyHomePage(title: "mina"),
              //    onGenerateRoute: AppRouter.generateRoute,

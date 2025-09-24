@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 abstract class ApiConfiguration {
   String get baseUrl;
 

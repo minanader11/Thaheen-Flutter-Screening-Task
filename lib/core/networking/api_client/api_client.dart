@@ -3,8 +3,9 @@ import 'package:base_project/core/networking/api_client/request_strategy.dart';
 import 'package:base_project/core/networking/api_result/api_result.dart';
 import 'package:base_project/core/networking/error_handle/error_parser.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
-
+@lazySingleton
 class ApiClient {
   RequestExecutor executor;
 

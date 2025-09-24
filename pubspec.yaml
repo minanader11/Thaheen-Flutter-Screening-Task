@@ -47,8 +47,9 @@ dependencies:
   equatable: ^2.0.7
   bloc_test: ^10.0.0
   connectivity_plus: ^7.0.0
-  rxdart: ^0.28.0
+#  rxdart: ^0.28.0
   smooth_page_indicator: ^1.2.1
+  injectable: ^2.5.1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +64,8 @@ dev_dependencies:
 
   # for mockito
   mocktail: ^1.0.4
-
+  injectable_generator: ^2.8.1
+  build_runner: ^2.7.1
 
 flutter:
 

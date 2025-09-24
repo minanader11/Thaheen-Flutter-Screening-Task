@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:base_project/core/get_it/dependecy_injection.dart';
+import 'package:base_project/core/get_it/injection.dart';
 import 'package:base_project/core/widgets/app_sheard_widgets/custom_app_bar.dart';
 import 'package:base_project/core/widgets/base_scaffold/base_scaffold.dart';
 import 'package:base_project/features/service_details/view/widgets/apply_button.dart';

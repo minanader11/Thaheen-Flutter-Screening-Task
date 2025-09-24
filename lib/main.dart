@@ -1,11 +1,40 @@
-import 'package:base_project/my_app.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-void main() {
+import 'package:base_project/core/config/api_config.dart';
+import 'package:base_project/core/config/test_api_config.dart';
+import 'package:base_project/core/get_it/dependecy_injection.dart';
+import 'package:base_project/core/get_it/injection.dart';
+import 'package:base_project/core/networking/api_client/api_client.dart';
+import 'package:base_project/core/networking/api_result/api_result.dart';
+import 'package:base_project/core/services/bloc_observer/bloc_observer.dart';
+import 'package:base_project/my_app.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:injectable/injectable.dart';
+
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
+  // Initialize dependency injection
+  //await getItInit(apiConfiguration: TestApiConfiguration());
+  // Register the Test API configuration
+//  final config = getIt<ApiConfiguration>();
+ // log("============ Base URL: ${config.baseUrl} ==============");
+  //bloc observer
+   configureDependencies(Environment.test); // choose dev/prod/test env
+
+
+ // getIt().
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
+Future<ApiResult> sendRequest() {
+  return
+       getIt<ApiClient>().get("/todos");
 
+}
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

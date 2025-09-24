@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:base_project/core/config/api_config.dart';
 import 'package:base_project/core/networking/interceptors/interceptor_handler.dart';
 import 'package:flutter/material.dart';
-
+import 'package:injectable/injectable.dart';
+@lazySingleton
 class DioHelper {
   final ApiConfiguration config;
   final InterceptorsHandler interceptorHandler;
