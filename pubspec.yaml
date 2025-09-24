@@ -1,0 +1,100 @@
+name: base_project
+description: "Base Project"
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #dependency injection
+  get_it: ^8.0.3
+  #state management
+  flutter_bloc: ^9.1.1
+  bloc: ^9.0.0
+  #for adapting screen and font size
+  flutter_screenutil: ^5.9.3
+  #networking
+  # retrofit: ^4.5.0
+  dio: ^5.8.0+1
+  # json_annotation: ^4.8.1
+  #for SVG images
+  flutter_svg: ^2.2.1
+  #fluttertoast for show toast messages
+  fluttertoast: ^8.2.12
+  #secure storage
+  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.5.3
+  #for image helper methods
+  gif_view: ^1.0.3
+  lottie: ^3.3.1
+  cached_network_image: ^3.4.1
+  #localization
+  intl: ^0.20.2
+  flutter_localization: ^0.3.3
+  # for picking images from gallery or camera
+  image_picker: ^1.2.0
+  # for picking files from device
+  file_picker: ^10.3.3
+
+
+  cupertino_icons: ^1.0.8
+  equatable: ^2.0.7
+  bloc_test: ^10.0.0
+  connectivity_plus: ^7.0.0
+  rxdart: ^0.28.0
+  smooth_page_indicator: ^1.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  #for localization
+  intl_utils: ^2.8.11
+  flutter_lints: ^4.0.0
+
+  # for testing
+  test: ^1.25.15
+
+  # for mockito
+  mocktail: ^1.0.4
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/json/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cairo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Cairo-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cairo-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Cairo-Black.ttf
+          weight: 900
+
+flutter_intl:
+  enabled: true
+  arb_dir: lib/core/localization/l10n
+  output_dir: lib/core/localization/generated

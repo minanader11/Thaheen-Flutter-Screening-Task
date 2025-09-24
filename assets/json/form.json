@@ -1,0 +1,101 @@
+[
+    {
+        "title": "الراتب الاجمالي",
+        "fields": [
+            {
+                "label": "الراتب الاجمالى بالريال القطري",
+                "fieldType": "TextInput",
+                "required": true,
+                "keyboardType": "number"
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "title": "الراتب التقاعدي",
+        "fields": [
+            {
+                "label": "الراتب التقاعدي بالريال القطري",
+                "fieldType": "TextInput",
+                "required": true,
+                "keyboardType": "number"
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "title": "رقم السجل التجاري",
+        "fields": [
+            {
+                "label": "رقم السجل التجاري",
+                "fieldType": "TextInput"
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "title": "رقم السجل العقاري",
+        "fields": [
+            {
+                "label": "رقم السجل العقاري",
+                "fieldType": "TextInput"
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "title": "نصيب من متوفى",
+        "fields": [
+            {
+                "label": "نصيب من متوفى بالريال القطري",
+                "fieldType": "TextInput",
+                "required": false,
+                "keyboardType": "number"
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "fields": [
+            {
+                "label": "بدل خادم",
+                "fieldType": "SwitchInput",
+                "required": false
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "fields": [],
+        "attachments": [
+            {
+                "label": "البطاقة الشخصية",
+                "required": true
+            },
+            {
+                "label": "بطاقة الضمان الاجتماعي",
+                "required": true
+            },
+            {
+                "label": "كتب التسجيل العقاري",
+                "required": true
+            },
+            {
+                "label": "شهادة البنك IBAN",
+                "required": true
+            },
+            {
+                "label": "حركة الدخول والخروج",
+                "required": true
+            },
+            {
+                "label": "شهادة اثبات عدم زواج",
+                "required": false
+            },
+            {
+                "label": "عقد الايجار",
+                "required": true
+            }
+        ]
+    }
+]

@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+
+class ColorManager {
+  // Defines color constants for the app
+  // Example : static const Color primaryColor = Color(0xFF3F51B5);
+  static const Color black = Colors.black;
+  static const Color white = Colors.white;
+  static const Color purple = Colors.purple;
+  static const Color green = Color(0xff20810A);
+  static const Color yellow = Color.fromARGB(255, 224, 204, 25);
+  static const Color red = Color.fromARGB(255, 173, 31, 21);
+  static const Color mainAppColor = Color(0xFF8A1538);
+  static const Color statusBarColor = Color(0xFF4B0618);
+  static const Color secondaryBackground = Color(0xFFFCF9FA);
+  static const Color errorFill = Color(0xFFFFFBE6);
+  static const Color errorBorder = Color(0xFFAD6800);
+  static const Color borderColor = Color(0xFFD3BBC2);
+  static const Color greenColorForText = Color(0xFF237804);
+  static const Color green135200 = Color(0xff135200);
+  static const Color warningColor = Color(0xff874D00);
+  static const Color onboardingDotInactive = Color(0xFFD3BBC2);
+}

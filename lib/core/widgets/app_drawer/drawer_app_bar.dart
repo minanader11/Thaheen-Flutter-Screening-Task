@@ -1,0 +1,34 @@
+import 'package:base_project/core/constants/icons_paths.dart';
+import 'package:base_project/core/styles/styles.dart';
+import 'package:base_project/core/widgets/other/custom_text.dart';
+import 'package:base_project/core/widgets/other/image_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../localization/generated/l10n.dart';
+
+class DrawerAppBar extends StatelessWidget {
+  final String? userName;
+  final Function()? onTap;
+  const DrawerAppBar({super.key, this.userName, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        InkWell(
+            onTap: onTap,
+            child: const ImageHelper(
+                image: IconsPath.arrowRightIcon, imageType: ImageType.svg)),
+        SizedBox(
+          width: 11.w,
+        ),
+        Expanded(
+            child: CustomText(
+          text: S.current.greetingUser(userName ?? ""),
+          textStyle: TextStyles.styleTextLGStrong,
+        ))
+      ],
+    );
+  }
+}
