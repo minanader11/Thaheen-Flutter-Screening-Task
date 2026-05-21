@@ -25,7 +25,7 @@ class TasksBottomSection extends StatelessWidget {
           // ── Daily Tasks ──────────────────────────────────
           Expanded(
             child: TaskColumnWidget(
-              title: 'Daily Tasks',
+              title: 'Teams Daily Tasks',
               icon: Icons.calendar_today_rounded,
               color: const Color(0xFF5BA3D0),
               bgColor: const Color(0xFF1E3A4F),
@@ -36,7 +36,7 @@ class TasksBottomSection extends StatelessWidget {
           // ── Bonus Tasks ───────────────────────────────────
           Expanded(
             child: TaskColumnWidget(
-              title: 'Bonus Tasks',
+              title: 'Individual Tasks',
               icon: Icons.star_rounded,
               color: const Color(0xFFFFA726),
               bgColor: const Color(0xFF3D2A0A),
