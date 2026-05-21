@@ -50,7 +50,7 @@ dependencies:
 #  rxdart: ^0.28.0
   smooth_page_indicator: ^1.2.1
   injectable: ^2.5.1
-
+  signalr_netcore: ^1.4.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

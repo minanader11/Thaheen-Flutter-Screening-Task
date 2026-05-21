@@ -11,7 +11,7 @@
 // import 'package:base_project/features/my_requests/view/screens/request_details_page.dart';
 // import 'package:base_project/features/onboarding/view/screens/onboarding_page.dart';
 // import 'package:base_project/features/onboarding/view_model/onboarding_cubit.dart';
-// import 'package:base_project/features/service_details/view/screen/service_details_screen.dart';
+// import 'package:base_project/features/service_details/view/screen/home.dart';
 // import 'package:base_project/features/social_security/view/screen/social_security_screen.dart';
 // import 'package:base_project/features/social_security/view/screen/edit_social_security_info.dart';
 // import 'package:base_project/features/submit_service_request/view/screen/submit_service_request_screen.dart';

@@ -5,7 +5,7 @@ import 'api_config.dart';
 @LazySingleton(as: ApiConfiguration, env: [Environment.test])
 class TestApiConfiguration extends ApiConfiguration {
   @override
-  String get baseUrl => "https://jsonplaceholder.typicode.com";
+  String get baseUrl => "http://localhost:5171/api/";
 
   // Uncomment and implement the below lines if Microsoft authentication is needed
   @override
