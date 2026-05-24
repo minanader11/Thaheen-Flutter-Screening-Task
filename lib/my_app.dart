@@ -11,8 +11,9 @@ import 'package:base_project/core/services/app_life_cycle/app_life_cycle.dart';
 import 'package:base_project/core/services/connectivity_check/cubit/connectivity_cubit.dart';
 import 'package:base_project/core/styles/colors.dart';
 import 'package:base_project/core/styles/styles.dart';
-import 'package:base_project/features/home/view/screen/home.dart';
-import 'package:base_project/features/home/view/screen/scoreboard_screen.dart';
+import 'package:base_project/features/admin/view/screen/admin_screen.dart';
+import 'package:base_project/features/admin/view_model/admin_cubit.dart';
+
 import 'package:base_project/main.dart';
 
 import 'package:flutter/material.dart';
@@ -93,17 +94,24 @@ class MyApp extends StatelessWidget {
   // }
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(1920, 1080), // scoreboard is 1920x1080
-      minTextAdapt: true,
-      splitScreenMode: false,
-      builder: (context, child) {
-        return MaterialApp(
-          title: 'Logos Junior Forum Egypt 2026',
-          home: const ScoreboardScreen(),
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<AdminCubit>(),
+            ),
+          ],
+      child: ScreenUtilInit(
+        designSize: const Size(1920, 1080), // scoreboard is 1920x1080
+        minTextAdapt: true,
+        splitScreenMode: false,
+        builder: (context, child) {
+          return MaterialApp(
+            title: 'Logos Junior Forum Egypt 2026',
+            home: const AdminScreen(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      ),
     );
   }
 }

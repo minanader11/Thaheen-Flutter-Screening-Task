@@ -33,9 +33,10 @@ import 'package:base_project/core/networking/refresh_token_handler/refresh_token
     as _i292;
 import 'package:base_project/core/networking/refresh_token_handler/refresh_token_hanlder.dart'
     as _i639;
-import 'package:base_project/features/home/repo/home_repo.dart' as _i460;
-import 'package:base_project/features/home/repo/home_repo_impl.dart' as _i187;
-import 'package:base_project/features/home/view_model/cubit.dart' as _i544;
+import 'package:base_project/features/admin/repo/admin_repo.dart' as _i477;
+import 'package:base_project/features/admin/repo/admin_repo_impl.dart' as _i988;
+import 'package:base_project/features/admin/view_model/admin_cubit.dart'
+    as _i1019;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -84,10 +85,10 @@ extension GetItInjectableX on _i174.GetIt {
           dio: gh<_i361.Dio>(),
           errorParser: gh<_i694.ErrorParser>(),
         ));
-    gh.lazySingleton<_i460.HomeRepo>(
-        () => _i187.HomeRepoImpl(apiClient: gh<_i600.ApiClient>()));
-    gh.factory<_i544.HomeCubit>(
-        () => _i544.HomeCubit(repo: gh<_i460.HomeRepo>()));
+    gh.lazySingleton<_i477.AdminRepo>(
+        () => _i988.AdminRepoImpl(apiClient: gh<_i600.ApiClient>()));
+    gh.factory<_i1019.AdminCubit>(
+        () => _i1019.AdminCubit(repo: gh<_i477.AdminRepo>()));
     return this;
   }
 }

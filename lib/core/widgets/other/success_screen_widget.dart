@@ -40,7 +40,7 @@ class SuccessScreenWidget extends StatelessWidget {
             ),
             CustomText(
               text: titleMessage,
-              textStyle: TextStyles.styleHeading8
+              style: TextStyles.styleHeading8
                   .copyWith(fontSize: 20.sp, fontWeight: FontWeight.w700),
             ),
             SizedBox(
@@ -51,7 +51,7 @@ class SuccessScreenWidget extends StatelessWidget {
                 textOverflow: TextOverflow.visible,
                 text: descMessage,
                 textAlign: TextAlign.center,
-                textStyle: TextStyles.styleTextLGNormal.copyWith(
+                style: TextStyles.styleTextLGNormal.copyWith(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                   color: ColorManager.black,

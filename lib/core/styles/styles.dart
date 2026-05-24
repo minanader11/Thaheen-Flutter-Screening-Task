@@ -7,13 +7,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TextStyles {
   static String fontFamily = 'Cairo';
 
+  // ── Existing styles (preserved) ───────────────────────────
+
   static TextStyle styleTextLGNormal = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w400,
     fontSize: 16.sp,
     color: Colors.black.withOpacity(0.45),
   );
-
 
   static TextStyle styleHeading9 = TextStyle(
     fontFamily: fontFamily,
@@ -59,14 +60,18 @@ class TextStyles {
     fontSize: 14.sp,
     color: ColorManager.mainAppColor,
   );
+
   static TextStyle styleTextLGStrong = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w700,
     fontSize: 16.sp,
     color: Colors.white,
   );
+
   // ── Display ───────────────────────────────────────────────
+
   static TextStyle displayLarge = TextStyle(
+    fontFamily: fontFamily,
     fontSize: 48.sp,
     fontWeight: FontWeight.w900,
     color: ColorManager.textPrimary,
@@ -74,6 +79,7 @@ class TextStyles {
   );
 
   static TextStyle displayMedium = TextStyle(
+    fontFamily: fontFamily,
     fontSize: 36.sp,
     fontWeight: FontWeight.w800,
     color: ColorManager.textPrimary,
@@ -81,6 +87,7 @@ class TextStyles {
   );
 
   // ── Headline ──────────────────────────────────────────────
+
   static TextStyle headlineLarge = TextStyle(
     fontFamily: fontFamily,
     fontSize: 28.sp,
@@ -103,6 +110,7 @@ class TextStyles {
   );
 
   // ── Title ─────────────────────────────────────────────────
+
   static TextStyle titleLarge = TextStyle(
     fontFamily: fontFamily,
     fontSize: 16.sp,
@@ -118,6 +126,7 @@ class TextStyles {
   );
 
   // ── Body ──────────────────────────────────────────────────
+
   static TextStyle bodyLarge = TextStyle(
     fontFamily: fontFamily,
     fontSize: 14.sp,
@@ -140,6 +149,7 @@ class TextStyles {
   );
 
   // ── Label ─────────────────────────────────────────────────
+
   static TextStyle labelLarge = TextStyle(
     fontFamily: fontFamily,
     fontSize: 12.sp,
@@ -148,7 +158,8 @@ class TextStyles {
     letterSpacing: 0.5,
   );
 
-  static TextStyle labelMedium = TextStyle(  fontFamily: fontFamily,
+  static TextStyle labelMedium = TextStyle(
+    fontFamily: fontFamily,
     fontSize: 10.sp,
     fontWeight: FontWeight.w500,
     color: ColorManager.textSecondary,
@@ -156,23 +167,294 @@ class TextStyles {
   );
 
   // ── Score (scoreboard specific) ───────────────────────────
-  static TextStyle scoreHuge = TextStyle(  fontFamily: fontFamily,
+
+  static TextStyle scoreHuge = TextStyle(
+    fontFamily: fontFamily,
     fontSize: 56.sp,
     fontWeight: FontWeight.w900,
     color: ColorManager.secondary,
     letterSpacing: -2.0,
   );
 
-  static TextStyle scoreLarge = TextStyle(  fontFamily: fontFamily,
+  static TextStyle scoreLarge = TextStyle(
+    fontFamily: fontFamily,
     fontSize: 30.sp,
     fontWeight: FontWeight.w900,
     color: ColorManager.secondary,
   );
 
-  static TextStyle teamNameLarge = TextStyle(  fontFamily: fontFamily,
+  static TextStyle teamNameLarge = TextStyle(
+    fontFamily: fontFamily,
     fontSize: 20.sp,
     fontWeight: FontWeight.w800,
     color: ColorManager.textPrimary,
     height: 1.2,
+  );
+
+  // ══════════════════════════════════════════════════════════
+  // NEW — White variants used across admin & scoreboard
+  // Convention: font{size}White{weight}
+  // ══════════════════════════════════════════════════════════
+
+  // ── 10sp ──────────────────────────────────────────────────
+
+  static TextStyle font10WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font10WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font10WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 11sp ──────────────────────────────────────────────────
+
+  static TextStyle font11WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font11WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font11WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 12sp ──────────────────────────────────────────────────
+
+  static TextStyle font12WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font12WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font12WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 13sp ──────────────────────────────────────────────────
+
+  static TextStyle font13WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font13WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font13WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 14sp ──────────────────────────────────────────────────
+
+  static TextStyle font14WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font14WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font14WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 16sp ──────────────────────────────────────────────────
+
+  static TextStyle font16WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font16WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font16WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 18sp ──────────────────────────────────────────────────
+
+  static TextStyle font18WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font18WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font18WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 20sp ──────────────────────────────────────────────────
+
+  static TextStyle font20WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font20WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font20WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 24sp ──────────────────────────────────────────────────
+
+  static TextStyle font24WhiteRegular = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static TextStyle font24WhiteMedium = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static TextStyle font24WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  // ── 28sp ──────────────────────────────────────────────────
+
+  static TextStyle font28WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle font28WhiteBlack = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w900,
+    color: Colors.white,
+    letterSpacing: -0.5,
+  );
+
+  // ── 32sp ──────────────────────────────────────────────────
+
+  static TextStyle font32WhiteBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    letterSpacing: -0.5,
+  );
+
+  static TextStyle font32WhiteBlack = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w900,
+    color: Colors.white,
+    letterSpacing: -1.0,
+  );
+
+  // ── 40sp — scoreboard score numbers ───────────────────────
+
+  static TextStyle font40WhiteBlack = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 40.sp,
+    fontWeight: FontWeight.w900,
+    color: Colors.white,
+    letterSpacing: -1.5,
+  );
+
+  // ── 48sp — top-ranked score ───────────────────────────────
+
+  static TextStyle font48WhiteBlack = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 48.sp,
+    fontWeight: FontWeight.w900,
+    color: Colors.white,
+    letterSpacing: -2.0,
   );
 }

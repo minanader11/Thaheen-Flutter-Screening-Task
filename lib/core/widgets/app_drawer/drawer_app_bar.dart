@@ -26,7 +26,7 @@ class DrawerAppBar extends StatelessWidget {
         Expanded(
             child: CustomText(
           text: S.current.greetingUser(userName ?? ""),
-          textStyle: TextStyles.styleTextLGStrong,
+          style: TextStyles.styleTextLGStrong,
         ))
       ],
     );

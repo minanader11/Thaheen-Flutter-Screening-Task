@@ -34,7 +34,7 @@ this.onTapDrawerItem});
             Expanded(
                 child: CustomText(
               text: actionTitle,
-              textStyle: TextStyles.styleTextLGNormal.copyWith(
+              style: TextStyles.styleTextLGNormal.copyWith(
                   color: Colors.white,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400),

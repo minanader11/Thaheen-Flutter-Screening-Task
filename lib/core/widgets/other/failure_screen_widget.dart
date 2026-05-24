@@ -38,7 +38,7 @@ class FailureScreenWidget extends StatelessWidget {
             SizedBox(height: 16.h),
             CustomText(
               text: S.current.failedAction(failureTitleMessage),
-              textStyle: TextStyles.styleHeading8.copyWith(
+              style: TextStyles.styleHeading8.copyWith(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w700,
               ),
@@ -49,7 +49,7 @@ class FailureScreenWidget extends StatelessWidget {
                 textOverflow: TextOverflow.visible,
                 text: failureDescMessage,
                 textAlign: TextAlign.center,
-                textStyle: TextStyles.styleTextLGNormal.copyWith(
+                style: TextStyles.styleTextLGNormal.copyWith(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                   color: ColorManager.black,
@@ -71,7 +71,7 @@ class FailureScreenWidget extends StatelessWidget {
               child: CustomText(
                 textOverflow: TextOverflow.visible,
                 text: secondActionTitle,
-                textStyle: TextStyles.styleTextLGNormal.copyWith(
+                style: TextStyles.styleTextLGNormal.copyWith(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: ColorManager.mainAppColor),
