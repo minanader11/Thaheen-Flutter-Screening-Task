@@ -23,7 +23,7 @@ class ColorManager {
   static const Color primary   = Color(0xFF5BA3D0);
   static const Color secondary = Color(0xFFFFA726);
   static const Color tertiary  = Color(0xFF6CBF56);
-  static const Color neutral   = Color(0xFF0F172A);
+  static const Color neutral   = Color(0xFF002768);
 
   // ── Task type colors ──────────────────────────────────────
   static const Color dailyTask   = primary;

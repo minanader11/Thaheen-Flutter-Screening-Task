@@ -222,8 +222,10 @@ class _TeamAvatar extends StatelessWidget {
         child: ImageHelper(
           image: "${EndPoints.imageBaseURl}${image}",
           imageType: ImageType.network,
-          imageShape: ImageShape.circle,
+        //  imageShape: ImageShape.circle,
           boxFit: BoxFit.fill,
+          height:60.h,
+          width: 60.w,
         ),
       )
           : Icon(Icons.groups_rounded, color: color, size: 24.r);
@@ -363,6 +365,7 @@ Widget _buildSuperPower(TeamSuperPower power) {
       image: "${EndPoints.imageBaseURl}${power.imageBase64}",
       imageType: ImageType.network,
       imageShape: ImageShape.circle,
+
     ),
   );
 }
