@@ -1,8 +1,8 @@
-import 'package:base_project/core/config/end_points.dart';
-import 'package:base_project/core/networking/api_client/api_client.dart';
-import 'package:base_project/core/networking/api_result/api_result.dart';
-import 'package:base_project/features/admin/model/task_model.dart';
-import 'package:base_project/features/admin/model/team_model.dart';
+import 'package:LJF_admin/core/config/end_points.dart';
+import 'package:LJF_admin/core/networking/api_client/api_client.dart';
+import 'package:LJF_admin/core/networking/api_result/api_result.dart';
+import 'package:LJF_admin/features/admin/model/task_model.dart';
+import 'package:LJF_admin/features/admin/model/team_model.dart';
 
 import 'package:injectable/injectable.dart';
 
@@ -79,7 +79,7 @@ class AdminRepoImpl implements AdminRepo {
     return await apiClient.delete(
       '${EndPoints.tasks}/$taskId',
       functionName: 'admin_deleteTask',
-      converter: (_) {},
+      converter: (data) {return data;},
     );
   }
 
@@ -93,7 +93,9 @@ class AdminRepoImpl implements AdminRepo {
       '${EndPoints.teams}/activate',
       functionName: 'admin_activateSuperPower',
       body: {'teamId': teamId, 'type': type},
-      converter: (_) {},
+      converter: (data) {
+        return data;
+      },
     );
   }
 
@@ -104,7 +106,9 @@ class AdminRepoImpl implements AdminRepo {
       '${EndPoints.teams}/deactivate',
       functionName: 'admin_deactivateSuperPower',
       body: {'teamId': teamId},
-      converter: (_) {},
+      converter: (data) {
+        return data;
+      },
     );
   }
 }

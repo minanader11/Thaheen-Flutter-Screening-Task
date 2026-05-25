@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:base_project/core/styles/colors.dart';
-import 'package:base_project/core/styles/fonts.dart';
-import 'package:base_project/core/styles/styles.dart';
+import 'package:LJF_admin/core/styles/colors.dart';
+import 'package:LJF_admin/core/styles/fonts.dart';
+import 'package:LJF_admin/core/styles/styles.dart';
 
 class CustomText extends StatelessWidget {
   final String text;

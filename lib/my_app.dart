@@ -2,19 +2,19 @@
 
 import 'dart:developer';
 
-import 'package:base_project/core/config/api_config.dart';
-import 'package:base_project/core/get_it/dependecy_injection.dart';
-import 'package:base_project/core/get_it/injection.dart';
-import 'package:base_project/core/localization/localization_cubit/localization_cubit.dart';
-import 'package:base_project/core/routing/routes.dart';
-import 'package:base_project/core/services/app_life_cycle/app_life_cycle.dart';
-import 'package:base_project/core/services/connectivity_check/cubit/connectivity_cubit.dart';
-import 'package:base_project/core/styles/colors.dart';
-import 'package:base_project/core/styles/styles.dart';
-import 'package:base_project/features/admin/view/screen/admin_screen.dart';
-import 'package:base_project/features/admin/view_model/admin_cubit.dart';
+import 'package:LJF_admin/core/config/api_config.dart';
+import 'package:LJF_admin/core/get_it/dependecy_injection.dart';
+import 'package:LJF_admin/core/get_it/injection.dart';
+import 'package:LJF_admin/core/localization/localization_cubit/localization_cubit.dart';
+import 'package:LJF_admin/core/routing/routes.dart';
+import 'package:LJF_admin/core/services/app_life_cycle/app_life_cycle.dart';
+import 'package:LJF_admin/core/services/connectivity_check/cubit/connectivity_cubit.dart';
+import 'package:LJF_admin/core/styles/colors.dart';
+import 'package:LJF_admin/core/styles/styles.dart';
+import 'package:LJF_admin/features/admin/view/screen/admin_screen.dart';
+import 'package:LJF_admin/features/admin/view_model/admin_cubit.dart';
 
-import 'package:base_project/main.dart';
+import 'package:LJF_admin/main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
             ),
           ],
       child: ScreenUtilInit(
-        designSize: const Size(1920, 1080), // scoreboard is 1920x1080
+        designSize:const Size(390, 844), // scoreboard is 1920x1080
         minTextAdapt: true,
         splitScreenMode: false,
         builder: (context, child) {

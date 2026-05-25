@@ -1,5 +1,5 @@
-import 'package:base_project/features/admin/model/task_model.dart';
-import 'package:base_project/features/admin/model/team_model.dart';
+import 'package:LJF_admin/features/admin/model/task_model.dart';
+import 'package:LJF_admin/features/admin/model/team_model.dart';
 import 'package:equatable/equatable.dart';
 
 

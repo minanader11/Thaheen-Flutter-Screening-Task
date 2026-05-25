@@ -1,8 +1,8 @@
 // import 'dart:async';
 // import 'package:connectivity_plus/connectivity_plus.dart';
-// import 'package:base_project/core/get_it/dependecy_injection.dart';
-// import 'package:base_project/core/localization/generated/l10n.dart';
-// import 'package:base_project/core/services/connectivity_check/connectivity_service/connectivity_service_interface.dart';
+// import 'package:LJF_admin/core/get_it/dependecy_injection.dart';
+// import 'package:LJF_admin/core/localization/generated/l10n.dart';
+// import 'package:LJF_admin/core/services/connectivity_check/connectivity_service/connectivity_service_interface.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:rxdart/rxdart.dart';

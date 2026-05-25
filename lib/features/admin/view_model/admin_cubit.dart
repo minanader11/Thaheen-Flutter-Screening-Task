@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 
-import 'package:base_project/features/admin/model/task_model.dart';
-import 'package:base_project/features/admin/model/team_model.dart';
-import 'package:base_project/features/admin/model/team_super_power_model.dart';
+import 'package:LJF_admin/features/admin/model/task_model.dart';
+import 'package:LJF_admin/features/admin/model/team_model.dart';
+import 'package:LJF_admin/features/admin/model/team_super_power_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:signalr_netcore/http_connection_options.dart';
@@ -118,6 +118,7 @@ class AdminCubit extends Cubit<AdminState> {
     required String type,
   }) async {
     emit(state.copyWith(activatePowerStatus: AdminActionStatus.loading));
+    log("superpower ${type}");
     final res = await repo.activateSuperPower(teamId: teamId, type: type);
     if (res.isSuccess) {
       emit(state.copyWith(activatePowerStatus: AdminActionStatus.success));
@@ -147,9 +148,10 @@ class AdminCubit extends Cubit<AdminState> {
   // ══════════════════════════════════════════════════════════════════
 
   Future<void> _initSignalR() async {
+    try{
     hubConnection = HubConnectionBuilder()
         .withUrl(
-          'http://localhost:5171/hubs/scoreboard',
+          'https://ljfscoring.runasp.net/hubs/scoreboard',
           options: HttpConnectionOptions(
             transport: HttpTransportType.LongPolling,
             requestTimeout: 30000,
@@ -170,7 +172,9 @@ class AdminCubit extends Cubit<AdminState> {
 
     await hubConnection!.start();
     emit(state.copyWith(isConnected: true));
-    log('AdminCubit — SignalR connected');
+    log('AdminCubit — SignalR connected');}catch(e){
+      log("errorrrrrr ${e}");
+    }
   }
 
   void _registerHandlers() {
@@ -266,7 +270,7 @@ class AdminCubit extends Cubit<AdminState> {
     final updatedTeams = state.teams.map((team) {
       if (team.id != teamId) return team;
       final updatedPowers = team.teamSuperPowers.map((power) {
-        if (power.type != powerType) return power;
+        if (power.type.name != powerType) return power;
         return TeamSuperPower(
           id: power.id,
           teamId: power.teamId,

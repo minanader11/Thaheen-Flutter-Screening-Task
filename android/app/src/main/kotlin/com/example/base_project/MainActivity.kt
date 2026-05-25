@@ -1,4 +1,4 @@
-package com.example.base_project
+package com.example.LJF_admin
 
 import io.flutter.embedding.android.FlutterActivity
 

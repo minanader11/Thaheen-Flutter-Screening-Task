@@ -1,13 +1,13 @@
-import 'package:base_project/core/styles/colors.dart';
-import 'package:base_project/core/constants/icons_paths.dart';
-import 'package:base_project/core/constants/images_paths.dart';
-import 'package:base_project/core/helper/navigation_extensions.dart';
-import 'package:base_project/core/routing/routes.dart';
+import 'package:LJF_admin/core/styles/colors.dart';
+import 'package:LJF_admin/core/constants/icons_paths.dart';
+import 'package:LJF_admin/core/constants/images_paths.dart';
+import 'package:LJF_admin/core/helper/navigation_extensions.dart';
+import 'package:LJF_admin/core/routing/routes.dart';
 
-import 'package:base_project/core/styles/colors.dart';
-import 'package:base_project/core/widgets/app_drawer/drawer_app_bar.dart';
-import 'package:base_project/core/widgets/app_drawer/drawer_custom_item.dart';
-import 'package:base_project/core/widgets/other/image_helper.dart';
+import 'package:LJF_admin/core/styles/colors.dart';
+import 'package:LJF_admin/core/widgets/app_drawer/drawer_app_bar.dart';
+import 'package:LJF_admin/core/widgets/app_drawer/drawer_custom_item.dart';
+import 'package:LJF_admin/core/widgets/other/image_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

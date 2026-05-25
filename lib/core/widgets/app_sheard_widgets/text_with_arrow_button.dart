@@ -1,8 +1,8 @@
-// import 'package:base_project/core/constants/icons_paths.dart';
-// import 'package:base_project/core/styles/colors.dart';
-// import 'package:base_project/core/styles/styles.dart';
-// import 'package:base_project/core/widgets/other/custom_text.dart';
-// import 'package:base_project/core/widgets/other/image_helper.dart';
+// import 'package:LJF_admin/core/constants/icons_paths.dart';
+// import 'package:LJF_admin/core/styles/colors.dart';
+// import 'package:LJF_admin/core/styles/styles.dart';
+// import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+// import 'package:LJF_admin/core/widgets/other/image_helper.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 //

@@ -1,6 +1,6 @@
 {
-    "name": "base_project",
-    "short_name": "base_project",
+    "name": "LJF_admin",
+    "short_name": "LJF_admin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

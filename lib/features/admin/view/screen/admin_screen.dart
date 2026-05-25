@@ -1,8 +1,10 @@
-import 'package:base_project/core/styles/colors.dart';
-import 'package:base_project/core/styles/styles.dart';
+import 'dart:developer';
 
-import 'package:base_project/core/widgets/other/custom_text.dart';
-import 'package:base_project/features/admin/view/widgets/tasks_list_section.dart';
+import 'package:LJF_admin/core/styles/colors.dart';
+import 'package:LJF_admin/core/styles/styles.dart';
+
+import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+import 'package:LJF_admin/features/admin/view/widgets/tasks_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -121,6 +123,7 @@ class _AdminScreenState extends State<AdminScreen>
           }
         },
         builder: (context, state) {
+          log("stateeeeeeeeee ${state.isLoading}");
           if (state.isLoading) {
             return const Center(
               child: CircularProgressIndicator(color: ColorManager.primary),

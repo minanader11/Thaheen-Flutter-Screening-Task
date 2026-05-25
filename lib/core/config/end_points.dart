@@ -5,6 +5,6 @@ class EndPoints {
   static const String tasks        = 'tasks';
   static String teamScore(int id)  => 'teams/$id/score';
   static String deleteTask(int id) => 'tasks/$id';
-  static const String imageBaseURl        = 'http://localhost:5171';
+  static const String imageBaseURl        = 'https://ljfscoring.runasp.net';
 
 }

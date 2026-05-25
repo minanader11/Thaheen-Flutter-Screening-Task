@@ -1,9 +1,9 @@
-// import 'package:base_project/core/config/api_config.dart';
+// import 'package:LJF_admin/core/config/api_config.dart';
 //
-// import 'package:base_project/core/get_it/connectivity_di/connectivity_di.dart';
-// import 'package:base_project/core/get_it/dio_di/dio_di.dart';
-// import 'package:base_project/core/get_it/local_storage_di/cache_helper_di.dart';
-// import 'package:base_project/core/get_it/localization_di/localization_di.dart';
+// import 'package:LJF_admin/core/get_it/connectivity_di/connectivity_di.dart';
+// import 'package:LJF_admin/core/get_it/dio_di/dio_di.dart';
+// import 'package:LJF_admin/core/get_it/local_storage_di/cache_helper_di.dart';
+// import 'package:LJF_admin/core/get_it/localization_di/localization_di.dart';
 //
 // import 'package:flutter/material.dart';
 //

@@ -1,4 +1,4 @@
-import 'package:base_project/core/widgets/app_drawer/app_drawer.dart';
+import 'package:LJF_admin/core/widgets/app_drawer/app_drawer.dart';
 import 'package:flutter/material.dart';
 
 class BaseScaffold extends StatelessWidget {

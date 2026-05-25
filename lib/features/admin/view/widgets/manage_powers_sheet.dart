@@ -1,7 +1,9 @@
-import 'package:base_project/core/styles/styles.dart';
+import 'dart:developer';
 
-import 'package:base_project/core/widgets/other/custom_text.dart';
-import 'package:base_project/features/admin/model/team_model.dart';
+import 'package:LJF_admin/core/styles/styles.dart';
+
+import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+import 'package:LJF_admin/features/admin/model/team_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,19 +22,19 @@ class ManagePowersSheet extends StatelessWidget {
   });
 
   static const _powerMeta = {
-    'TaxCollector': (
+    'taxCollector': (
     icon: Icons.account_balance,
     label: 'Tax Collector',
     desc: "10% of every rival's points go to you",
     color: Color(0xFFFFD700),
     ),
-    'DoublePoints': (
+    'doublePoints': (
     icon: Icons.bolt,
     label: 'Double Points',
     desc: 'Next points event awards ×2',
     color: Color(0xFF3A86FF),
     ),
-    'Minus': (
+    'minus': (
     icon: Icons.remove_circle_outline,
     label: 'Minus',
     desc: 'Deduct equal points from a rival once',
@@ -83,13 +85,15 @@ class ManagePowersSheet extends StatelessWidget {
           SizedBox(height: 16.h),
 
           ...team.teamSuperPowers.map((power) {
-            final meta = _powerMeta[power.type];
+            final meta = _powerMeta[power.type.name];
+          //  log("metaaa ${meta} ${power.type.name}");
             if (meta == null) return const SizedBox.shrink();
 
-            final isActive = power.status == 'Activated';
-            final isDeactivated = power.status == 'Deactivated';
+            final isActive = power.status.name == 'activated';
+            final isDeactivated = power.status.name == 'deactivated';
+            log("metaaa ${meta} ${power.type.name} isDeactivated ${power.status.name}");
             final isAnotherActive =
-                activePower != null && activePower != power.type;
+                activePower != null && activePower != power.type.name;
 
             return _PowerTile(
               icon: meta.icon,
@@ -100,7 +104,7 @@ class ManagePowersSheet extends StatelessWidget {
               isDeactivated: isDeactivated,
               isBlocked: isAnotherActive && !isActive,
               onActivate: () {
-                onActivate(power.type.toString());
+                onActivate(power.type.name);
                 Navigator.pop(context);
               },
               onDeactivate: () {

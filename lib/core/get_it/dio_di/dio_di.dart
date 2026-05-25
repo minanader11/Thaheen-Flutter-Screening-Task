@@ -1,13 +1,13 @@
 // import 'package:dio/dio.dart';
-// import 'package:base_project/core/config/api_config.dart';
-// import 'package:base_project/core/get_it/dependecy_injection.dart';
-// import 'package:base_project/core/networking/api_client/api_client.dart';
-// import 'package:base_project/core/networking/dio_helper/dio_helper.dart';
-// import 'package:base_project/core/networking/error_handle/dio_error_parser.dart';
-// import 'package:base_project/core/networking/error_handle/error_parser.dart';
-// import 'package:base_project/core/networking/interceptors/interceptor_handler.dart';
-// import 'package:base_project/core/networking/interceptors/interceptor_handler_imp.dart';
-// import 'package:base_project/core/networking/refresh_token_handler/refresh_token_handler_impl.dart';
+// import 'package:LJF_admin/core/config/api_config.dart';
+// import 'package:LJF_admin/core/get_it/dependecy_injection.dart';
+// import 'package:LJF_admin/core/networking/api_client/api_client.dart';
+// import 'package:LJF_admin/core/networking/dio_helper/dio_helper.dart';
+// import 'package:LJF_admin/core/networking/error_handle/dio_error_parser.dart';
+// import 'package:LJF_admin/core/networking/error_handle/error_parser.dart';
+// import 'package:LJF_admin/core/networking/interceptors/interceptor_handler.dart';
+// import 'package:LJF_admin/core/networking/interceptors/interceptor_handler_imp.dart';
+// import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_handler_impl.dart';
 //
 // void dioDi({required ApiConfiguration config}) {
 //   // Register config

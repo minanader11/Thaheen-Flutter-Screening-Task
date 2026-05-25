@@ -1,6 +1,6 @@
-import 'package:base_project/core/networking/api_result/api_result.dart';
-import 'package:base_project/features/admin/model/task_model.dart';
-import 'package:base_project/features/admin/model/team_model.dart';
+import 'package:LJF_admin/core/networking/api_result/api_result.dart';
+import 'package:LJF_admin/features/admin/model/task_model.dart';
+import 'package:LJF_admin/features/admin/model/team_model.dart';
 
 
 abstract class AdminRepo {

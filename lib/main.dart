@@ -1,13 +1,13 @@
 import 'dart:developer';
 
-import 'package:base_project/core/config/api_config.dart';
-import 'package:base_project/core/config/test_api_config.dart';
-import 'package:base_project/core/get_it/dependecy_injection.dart';
-import 'package:base_project/core/get_it/injection.dart';
-import 'package:base_project/core/networking/api_client/api_client.dart';
-import 'package:base_project/core/networking/api_result/api_result.dart';
-import 'package:base_project/core/services/bloc_observer/bloc_observer.dart';
-import 'package:base_project/my_app.dart';
+import 'package:LJF_admin/core/config/api_config.dart';
+import 'package:LJF_admin/core/config/test_api_config.dart';
+import 'package:LJF_admin/core/get_it/dependecy_injection.dart';
+import 'package:LJF_admin/core/get_it/injection.dart';
+import 'package:LJF_admin/core/networking/api_client/api_client.dart';
+import 'package:LJF_admin/core/networking/api_result/api_result.dart';
+import 'package:LJF_admin/core/services/bloc_observer/bloc_observer.dart';
+import 'package:LJF_admin/my_app.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

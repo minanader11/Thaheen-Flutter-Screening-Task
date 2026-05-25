@@ -9,33 +9,33 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:base_project/core/config/api_config.dart' as _i618;
-import 'package:base_project/core/config/production_config.dart' as _i554;
-import 'package:base_project/core/config/test_api_config.dart' as _i442;
-import 'package:base_project/core/local_storage/cache_helper.dart' as _i1047;
-import 'package:base_project/core/localization/localization_cubit/localization_cubit.dart'
+import 'package:LJF_admin/core/config/api_config.dart' as _i618;
+import 'package:LJF_admin/core/config/production_config.dart' as _i554;
+import 'package:LJF_admin/core/config/test_api_config.dart' as _i442;
+import 'package:LJF_admin/core/local_storage/cache_helper.dart' as _i1047;
+import 'package:LJF_admin/core/localization/localization_cubit/localization_cubit.dart'
     as _i486;
-import 'package:base_project/core/networking/api_client/api_client.dart'
+import 'package:LJF_admin/core/networking/api_client/api_client.dart'
     as _i600;
-import 'package:base_project/core/networking/api_client/request_executer.dart'
+import 'package:LJF_admin/core/networking/api_client/request_executer.dart'
     as _i167;
-import 'package:base_project/core/networking/dio_helper/dio_helper.dart'
+import 'package:LJF_admin/core/networking/dio_helper/dio_helper.dart'
     as _i263;
-import 'package:base_project/core/networking/error_handle/dio_error_parser.dart'
+import 'package:LJF_admin/core/networking/error_handle/dio_error_parser.dart'
     as _i929;
-import 'package:base_project/core/networking/error_handle/error_parser.dart'
+import 'package:LJF_admin/core/networking/error_handle/error_parser.dart'
     as _i694;
-import 'package:base_project/core/networking/interceptors/interceptor_handler.dart'
+import 'package:LJF_admin/core/networking/interceptors/interceptor_handler.dart'
     as _i423;
-import 'package:base_project/core/networking/interceptors/interceptor_handler_imp.dart'
+import 'package:LJF_admin/core/networking/interceptors/interceptor_handler_imp.dart'
     as _i132;
-import 'package:base_project/core/networking/refresh_token_handler/refresh_token_handler_impl.dart'
+import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_handler_impl.dart'
     as _i292;
-import 'package:base_project/core/networking/refresh_token_handler/refresh_token_hanlder.dart'
+import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_hanlder.dart'
     as _i639;
-import 'package:base_project/features/admin/repo/admin_repo.dart' as _i477;
-import 'package:base_project/features/admin/repo/admin_repo_impl.dart' as _i988;
-import 'package:base_project/features/admin/view_model/admin_cubit.dart'
+import 'package:LJF_admin/features/admin/repo/admin_repo.dart' as _i477;
+import 'package:LJF_admin/features/admin/repo/admin_repo_impl.dart' as _i988;
+import 'package:LJF_admin/features/admin/view_model/admin_cubit.dart'
     as _i1019;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
