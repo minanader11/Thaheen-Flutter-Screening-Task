@@ -4,6 +4,7 @@ import 'package:LJF_admin/core/styles/colors.dart';
 import 'package:LJF_admin/core/styles/styles.dart';
 
 import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+import 'package:LJF_admin/features/admin/model/team_model.dart';
 import 'package:LJF_admin/features/admin/view/widgets/tasks_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,20 +42,27 @@ class _AdminScreenState extends State<AdminScreen>
   }
 
   // ── Action handlers ────────────────────────────────────
-  void _showAddPoints(BuildContext context, int index) {
+
+  /// Opens the ADD POINTS sheet for [team].
+  void _showAddPoints(BuildContext context, TeamModel team) {
     final cubit = context.read<AdminCubit>();
-    final state = cubit.state;
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => Padding(
         padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom),
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: AddPointsSheet(
-          team: state.teams[index],
-          allTeams: state.teams,
-          onConfirm: ({required teamId, required points, targetTeamToMinus}) {
+          team: team,
+          allTeams: cubit.state.teams,
+          onConfirm: ({
+            required int teamId,
+            required int points,
+            int? targetTeamToMinus,
+          }) {
             cubit.addPoints(
               teamId: teamId,
               points: points,
@@ -66,20 +74,35 @@ class _AdminScreenState extends State<AdminScreen>
     );
   }
 
-  void _showManagePowers(BuildContext context, int index) {
+  /// Opens the MANAGE POWERS sheet for [team].
+  void _showManagePowers(BuildContext context, TeamModel team) {
     final cubit = context.read<AdminCubit>();
-    final team = cubit.state.teams[index];
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => ManagePowersSheet(
-        team: team,
-        onActivate: (type) => cubit.activateSuperPower(
-          teamId: team.id,
-          type: type,
+      builder: (_) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
-        onDeactivate: () => cubit.deactivateSuperPower(team.id),
+        child: ManagePowersSheet(
+          team: team,
+          allTeams: cubit.state.teams,
+          onActivate: (
+              String type, {
+                int? targetTeamToFreeze,
+                String? reActivatedType,
+              }) {
+            cubit.activateSuperPower(
+              teamId: team.id,
+              type: type,
+              targetTeamToFreeze: targetTeamToFreeze,
+              reActivatedType: reActivatedType,
+            );
+          },
+          onDeactivate: () => cubit.deactivateSuperPower(team.id),
+        ),
       ),
     );
   }
@@ -91,8 +114,8 @@ class _AdminScreenState extends State<AdminScreen>
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => Padding(
-        padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom),
+        padding:
+        EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: CreateTaskSheet(
           onConfirm: ({required name, required type, required score}) {
             cubit.createTask(name: name, type: type, score: score);
@@ -140,8 +163,8 @@ class _AdminScreenState extends State<AdminScreen>
                 // ── Tab 1 : Teams ────────────────────────
                 _TeamsTab(
                   state: state,
-                  onAddPoints: (i) => _showAddPoints(context, i),
-                  onManagePowers: (i) => _showManagePowers(context, i),
+                  onAddPoints: (team) => _showAddPoints(context, team),
+                  onManagePowers: (team) => _showManagePowers(context, team),
                 ),
 
                 // ── Tab 2 : Tasks ────────────────────────
@@ -160,14 +183,14 @@ class _AdminScreenState extends State<AdminScreen>
         animation: _tabController,
         builder: (_, __) => _tabController.index == 1
             ? FloatingActionButton.extended(
-                onPressed: () => _showCreateTask(context),
-                backgroundColor: ColorManager.primary,
-                icon: const Icon(Icons.add, color: Colors.white),
-                label: CustomText(
-                  text: 'New Task',
-                  style: TextStyles.font13WhiteMedium,
-                ),
-              )
+          onPressed: () => _showCreateTask(context),
+          backgroundColor: ColorManager.primary,
+          icon: const Icon(Icons.add, color: Colors.white),
+          label: CustomText(
+            text: 'New Task',
+            style: TextStyles.font13WhiteMedium,
+          ),
+        )
             : const SizedBox.shrink(),
       ),
     );
@@ -245,7 +268,7 @@ class _AdminScreenState extends State<AdminScreen>
                 SizedBox(width: 6.w),
                 CustomText(
                   text:
-                      'Tasks (${state.dailyTasks.length + state.bonusTasks.length + state.flashTasks.length})',
+                  'Tasks (${state.dailyTasks.length + state.bonusTasks.length + state.flashTasks.length})',
                   style: TextStyles.font13WhiteMedium,
                 ),
               ],
@@ -263,8 +286,8 @@ class _AdminScreenState extends State<AdminScreen>
 
 class _TeamsTab extends StatelessWidget {
   final AdminState state;
-  final void Function(int index) onAddPoints;
-  final void Function(int index) onManagePowers;
+  final void Function(TeamModel team) onAddPoints;    // ← TeamModel, not int
+  final void Function(TeamModel team) onManagePowers; // ← TeamModel, not int
 
   const _TeamsTab({
     required this.state,
@@ -278,8 +301,7 @@ class _TeamsTab extends StatelessWidget {
       return Center(
         child: CustomText(
           text: 'No teams loaded',
-          style:
-              TextStyles.font14WhiteBold.copyWith(color: Colors.white30),
+          style: TextStyles.font14WhiteBold.copyWith(color: Colors.white30),
         ),
       );
     }
@@ -288,12 +310,15 @@ class _TeamsTab extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 100.h),
       itemCount: state.teams.length,
       separatorBuilder: (_, __) => SizedBox(height: 10.h),
-      itemBuilder: (_, i) => AdminTeamCard(
-        team: state.teams[i],
-        rank: i + 1,
-        onAddPoints: () => onAddPoints(i),
-        onManagePowers: () => onManagePowers(i),
-      ),
+      itemBuilder: (_, i) {
+        final team = state.teams[i];
+        return AdminTeamCard(
+          team: team,
+          rank: i + 1,
+          onAddPoints: () => onAddPoints(team),      // ← pass model, not index
+          onManagePowers: () => onManagePowers(team), // ← pass model, not index
+        );
+      },
     );
   }
 }

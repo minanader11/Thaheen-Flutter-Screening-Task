@@ -88,11 +88,18 @@ class AdminRepoImpl implements AdminRepo {
   Future<ApiResult<void>> activateSuperPower({
     required int teamId,
     required String type,
+    int? targetTeamToFreeze,
+    String? reActivatedType,
   }) async {
     return await apiClient.post(
       '${EndPoints.teams}/activate',
       functionName: 'admin_activateSuperPower',
-      body: {'teamId': teamId, 'type': type},
+      body: {
+        'teamId': teamId,
+        'type': type,
+        if (targetTeamToFreeze != null) 'targetTeamToFreeze': targetTeamToFreeze,
+        if (reActivatedType != null) 'reActivatedType': reActivatedType,
+      },
       converter: (data) {
         return data;
       },

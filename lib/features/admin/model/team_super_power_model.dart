@@ -7,29 +7,52 @@ import 'package:equatable/equatable.dart';
 enum SuperPowerType {
   taxCollector,
   doublePoints,
-  minus;
+  minus,
+  freezer,
+  dice,
+  reActivation;
 
-  /// Serialise to the string the backend expects (PascalCase).
+  /// Serialize to the string expected by the backend.
   String toJson() => switch (this) {
-        SuperPowerType.taxCollector => 'TaxCollector',
-        SuperPowerType.doublePoints => 'DoublePoints',
-        SuperPowerType.minus => 'Minus',
-      };
+    SuperPowerType.taxCollector => 'TaxCollector',
+    SuperPowerType.doublePoints => 'DoublePoints',
+    SuperPowerType.minus => 'Minus',
+    SuperPowerType.freezer => 'Freezer',
+    SuperPowerType.dice => 'Dice',
+    SuperPowerType.reActivation => 'ReActivation',
+  };
 
-  /// Parse the string sent by the backend.
+  /// Parse the string received from the backend.
   static SuperPowerType fromJson(String value) => switch (value) {
-        'TaxCollector' => SuperPowerType.taxCollector,
-        'DoublePoints' => SuperPowerType.doublePoints,
-        'Minus' => SuperPowerType.minus,
-        _ => throw ArgumentError('Unknown SuperPowerType: $value'),
-      };
+    'TaxCollector' => SuperPowerType.taxCollector,
+    'DoublePoints' => SuperPowerType.doublePoints,
+    'Minus' => SuperPowerType.minus,
+    'Freezer' => SuperPowerType.freezer,
+    'Dice' => SuperPowerType.dice,
+    'ReActivation' => SuperPowerType.reActivation,
+    _ => throw ArgumentError('Unknown SuperPowerType: $value'),
+  };
+
+  /// Safe parser that returns null for unknown values.
+  static SuperPowerType? tryParse(String? value) => switch (value) {
+    'TaxCollector' => SuperPowerType.taxCollector,
+    'DoublePoints' => SuperPowerType.doublePoints,
+    'Minus' => SuperPowerType.minus,
+    'Freezer' => SuperPowerType.freezer,
+    'Dice' => SuperPowerType.dice,
+    'ReActivation' => SuperPowerType.reActivation,
+    _ => null,
+  };
 
   /// Human-readable label used in the UI.
   String get label => switch (this) {
-        SuperPowerType.taxCollector => 'Tax Collector',
-        SuperPowerType.doublePoints => 'Double Points',
-        SuperPowerType.minus => 'Minus',
-      };
+    SuperPowerType.taxCollector => 'Tax Collector',
+    SuperPowerType.doublePoints => 'Double Points',
+    SuperPowerType.minus => 'Minus',
+    SuperPowerType.freezer => 'Freezer',
+    SuperPowerType.dice => 'Dice',
+    SuperPowerType.reActivation => 'Re-Activation',
+  };
 }
 
 enum SuperPowerStatus {

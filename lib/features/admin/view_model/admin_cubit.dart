@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-
 import 'package:LJF_admin/features/admin/model/task_model.dart';
 import 'package:LJF_admin/features/admin/model/team_model.dart';
 import 'package:LJF_admin/features/admin/model/team_super_power_model.dart';
@@ -58,7 +57,8 @@ class AdminCubit extends Cubit<AdminState> {
     }
   }
 
-  /// Add points to a team. Pass [targetTeamToMinus] when Minus power is active.
+  /// Add points to a team.
+  /// Pass [targetTeamToMinus] when Minus power is active.
   Future<void> addPoints({
     required int teamId,
     required int points,
@@ -90,7 +90,6 @@ class AdminCubit extends Cubit<AdminState> {
     final res = await repo.createTask(name: name, type: type, score: score);
     if (res.isSuccess) {
       emit(state.copyWith(createTaskStatus: AdminActionStatus.success));
-      // Task list refreshed via SignalR TaskAdded
     } else {
       emit(state.copyWith(
         createTaskStatus: AdminActionStatus.failure,
@@ -104,7 +103,6 @@ class AdminCubit extends Cubit<AdminState> {
     final res = await repo.deleteTask(taskId);
     if (res.isSuccess) {
       emit(state.copyWith(deleteTaskStatus: AdminActionStatus.success));
-      // Task list refreshed via SignalR TaskDeleted
     } else {
       emit(state.copyWith(
         deleteTaskStatus: AdminActionStatus.failure,
@@ -113,13 +111,26 @@ class AdminCubit extends Cubit<AdminState> {
     }
   }
 
+  /// Activate a superpower for a team.
+  ///
+  /// • [targetTeamToFreeze] — pass when [type] == 'freezer' (or re-activating Freezer)
+  /// • [reActivatedType]    — pass when [type] == 'reActivation'
   Future<void> activateSuperPower({
     required int teamId,
     required String type,
+    int? targetTeamToFreeze,
+    String? reActivatedType,
   }) async {
     emit(state.copyWith(activatePowerStatus: AdminActionStatus.loading));
-    log("superpower ${type}");
-    final res = await repo.activateSuperPower(teamId: teamId, type: type);
+    log('AdminCubit.activateSuperPower: type=$type, freeze=$targetTeamToFreeze, reActivate=$reActivatedType');
+
+    final res = await repo.activateSuperPower(
+      teamId: teamId,
+      type: type,
+      targetTeamToFreeze: targetTeamToFreeze,
+      reActivatedType: reActivatedType,
+    );
+
     if (res.isSuccess) {
       emit(state.copyWith(activatePowerStatus: AdminActionStatus.success));
     } else {
@@ -144,109 +155,135 @@ class AdminCubit extends Cubit<AdminState> {
   }
 
   // ══════════════════════════════════════════════════════════════════
-  // SignalR — mirrors HomeCubit handlers
+  // SignalR
   // ══════════════════════════════════════════════════════════════════
 
   Future<void> _initSignalR() async {
-    try{
-    hubConnection = HubConnectionBuilder()
-        .withUrl(
-          'https://ljfscoring.runasp.net/hubs/scoreboard',
-          options: HttpConnectionOptions(
-            transport: HttpTransportType.LongPolling,
-            requestTimeout: 30000,
-          ),
-        )
-        .withAutomaticReconnect()
-        .build();
+    try {
+      hubConnection = HubConnectionBuilder()
+          .withUrl(
+        'https://ljfscoring.runasp.net/hubs/scoreboard',
+        options: HttpConnectionOptions(
+          transport: HttpTransportType.LongPolling,
+          requestTimeout: 30000,
+        ),
+      )
+          .withAutomaticReconnect()
+          .build();
 
-    hubConnection!.onclose(({error}) {
-      emit(state.copyWith(isConnected: false));
-    });
+      hubConnection!.onclose(({error}) {
+        emit(state.copyWith(isConnected: false));
+      });
 
-    hubConnection!.onreconnected(({connectionId}) {
+      hubConnection!.onreconnected(({connectionId}) {
+        emit(state.copyWith(isConnected: true));
+      });
+
+      _registerHandlers();
+
+      await hubConnection!.start();
       emit(state.copyWith(isConnected: true));
-    });
-
-    _registerHandlers();
-
-    await hubConnection!.start();
-    emit(state.copyWith(isConnected: true));
-    log('AdminCubit — SignalR connected');}catch(e){
-      log("errorrrrrr ${e}");
+      log('AdminCubit — SignalR connected');
+    } catch (e) {
+      log('AdminCubit — SignalR error: $e');
     }
   }
 
   void _registerHandlers() {
     // ── ScoreUpdated ─────────────────────────────────────
     hubConnection!.on('ScoreUpdated', (args) {
-      if (args == null || args.length < 2) return;
-      _applySingleScoreUpdate(args[0] as int, args[1] as int);
+      try {
+        if (args == null || args.length < 2) return;
+        _applySingleScoreUpdate(args[0] as int, args[1] as int);
+      } catch (e) {
+        log('ScoreUpdated handler error: $e');
+      }
     });
 
     // ── BulkScoreUpdate ──────────────────────────────────
     hubConnection!.on('BulkScoreUpdate', (args) {
-      if (args == null || args.isEmpty) return;
-      final innerList = args[0] as List;
-      var updated = [...state.teams];
-      for (final entry in innerList) {
-        final map = Map<String, dynamic>.from(entry as Map);
-        final id = map['id'] as int;
-        final score = map['score'] as int;
-        updated = updated
-            .map((t) => t.id == id ? t.copyWith(score: score) : t)
-            .toList();
+      try {
+        if (args == null || args.isEmpty) return;
+        final innerList = args[0] as List;
+        var updated = [...state.teams];
+        for (final entry in innerList) {
+          final map = Map<String, dynamic>.from(entry as Map);
+          final id = map['id'] as int;
+          final score = map['score'] as int;
+          updated = updated
+              .map((t) => t.id == id ? t.copyWith(score: score) : t)
+              .toList();
+        }
+        updated.sort((a, b) => b.score.compareTo(a.score));
+        emit(state.copyWith(teams: updated));
+      } catch (e) {
+        log('BulkScoreUpdate handler error: $e');
       }
-      updated.sort((a, b) => b.score.compareTo(a.score));
-      emit(state.copyWith(teams: updated));
     });
 
     // ── SuperPowerActivated ──────────────────────────────
     hubConnection!.on('SuperPowerActivated', (args) {
-      if (args == null || args.length < 2) return;
-      _applyPowerStatusChange(
-        teamId: args[0] as int,
-        powerType: args[1] as String,
-        newStatus: 'Activated',
-      );
+      try {
+        if (args == null || args.length < 2) return;
+        _applyPowerStatusChange(
+          teamId: args[0] as int,
+          powerType: args[1] as String,
+          newStatus: 'Activated',
+        );
+      } catch (e) {
+        log('SuperPowerActivated handler error: $e');
+      }
     });
 
     // ── SuperPowerDeactivated ────────────────────────────
     hubConnection!.on('SuperPowerDeactivated', (args) {
-      if (args == null || args.length < 2) return;
-      _applyPowerStatusChange(
-        teamId: args[0] as int,
-        powerType: args[1] as String,
-        newStatus: 'Deactivated',
-      );
+      try {
+        if (args == null || args.length < 2) return;
+        _applyPowerStatusChange(
+          teamId: args[0] as int,
+          powerType: args[1] as String,
+          newStatus: 'Deactivated',
+        );
+      } catch (e) {
+        log('SuperPowerDeactivated handler error: $e');
+      }
     });
 
     // ── TaskAdded ────────────────────────────────────────
     hubConnection!.on('TaskAdded', (args) {
-      if (args == null || args.isEmpty) return;
-      final task = TaskModel.fromJson(Map<String, dynamic>.from(args[0] as Map));
-      switch (task.type) {
-        case TaskType.daily:
-          emit(state.copyWith(dailyTasks: [...state.dailyTasks, task]));
-          break;
-        case TaskType.bonus:
-          emit(state.copyWith(bonusTasks: [...state.bonusTasks, task]));
-          break;
-        case TaskType.flash:
-          emit(state.copyWith(flashTasks: [...state.flashTasks, task]));
-          break;
+      try {
+        if (args == null || args.isEmpty) return;
+        final task =
+        TaskModel.fromJson(Map<String, dynamic>.from(args[0] as Map));
+        switch (task.type) {
+          case TaskType.daily:
+            emit(state.copyWith(dailyTasks: [...state.dailyTasks, task]));
+            break;
+          case TaskType.bonus:
+            emit(state.copyWith(bonusTasks: [...state.bonusTasks, task]));
+            break;
+          case TaskType.flash:
+            emit(state.copyWith(flashTasks: [...state.flashTasks, task]));
+            break;
+        }
+      } catch (e) {
+        log('TaskAdded handler error: $e');
       }
     });
 
     // ── TaskDeleted ──────────────────────────────────────
     hubConnection!.on('TaskDeleted', (args) {
-      if (args == null || args.isEmpty) return;
-      final taskId = args[0] as int;
-      emit(state.copyWith(
-        dailyTasks: state.dailyTasks.where((t) => t.id != taskId).toList(),
-        bonusTasks: state.bonusTasks.where((t) => t.id != taskId).toList(),
-        flashTasks: state.flashTasks.where((t) => t.id != taskId).toList(),
-      ));
+      try {
+        if (args == null || args.isEmpty) return;
+        final taskId = args[0] as int;
+        emit(state.copyWith(
+          dailyTasks: state.dailyTasks.where((t) => t.id != taskId).toList(),
+          bonusTasks: state.bonusTasks.where((t) => t.id != taskId).toList(),
+          flashTasks: state.flashTasks.where((t) => t.id != taskId).toList(),
+        ));
+      } catch (e) {
+        log('TaskDeleted handler error: $e');
+      }
     });
   }
 
