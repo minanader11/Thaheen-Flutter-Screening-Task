@@ -10,6 +10,12 @@ class TeamModel extends Equatable {
   final String colorCode; // e.g. "#E63939"
   final List<TeamSuperPower> teamSuperPowers;
 
+  // ── New: Car build ──────────────────────────────────────────
+  final double carCompletionPercentage;
+
+  // ── New: Bank ────────────────────────────────────────────────
+  final double bankBalance;
+
   const TeamModel({
     required this.id,
     required this.name,
@@ -17,6 +23,8 @@ class TeamModel extends Equatable {
     required this.image,
     required this.colorCode,
     this.teamSuperPowers = const [],
+    this.carCompletionPercentage = 0,
+    this.bankBalance = 0,
   });
 
   // ── Convenience getters ──────────────────────────────────────
@@ -54,18 +62,23 @@ class TeamModel extends Equatable {
       teamSuperPowers: rawPowers
           .map((e) => TeamSuperPower.fromJson(e as Map<String, dynamic>))
           .toList(),
+      carCompletionPercentage:
+      (json['carCompletionPercentage'] as num?)?.toDouble() ?? 0,
+      bankBalance: (json['bankBalance'] as num?)?.toDouble() ?? 0,
     );
   }
 
   // ── toJson ───────────────────────────────────────────────────
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'score': score,
-        'image': image,
-        'colorCode': colorCode,
-        'teamSuperPowers': teamSuperPowers.map((p) => p.toJson()).toList(),
-      };
+    'id': id,
+    'name': name,
+    'score': score,
+    'image': image,
+    'colorCode': colorCode,
+    'teamSuperPowers': teamSuperPowers.map((p) => p.toJson()).toList(),
+    'carCompletionPercentage': carCompletionPercentage,
+    'bankBalance': bankBalance,
+  };
 
   // ── copyWith ─────────────────────────────────────────────────
   TeamModel copyWith({
@@ -75,6 +88,8 @@ class TeamModel extends Equatable {
     String? image,
     String? colorCode,
     List<TeamSuperPower>? teamSuperPowers,
+    double? carCompletionPercentage,
+    double? bankBalance,
   }) {
     return TeamModel(
       id: id ?? this.id,
@@ -83,16 +98,21 @@ class TeamModel extends Equatable {
       image: image ?? this.image,
       colorCode: colorCode ?? this.colorCode,
       teamSuperPowers: teamSuperPowers ?? this.teamSuperPowers,
+      carCompletionPercentage:
+      carCompletionPercentage ?? this.carCompletionPercentage,
+      bankBalance: bankBalance ?? this.bankBalance,
     );
   }
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        score,
-        image,
-        colorCode,
-        teamSuperPowers,
-      ];
+    id,
+    name,
+    score,
+    image,
+    colorCode,
+    teamSuperPowers,
+    carCompletionPercentage,
+    bankBalance,
+  ];
 }

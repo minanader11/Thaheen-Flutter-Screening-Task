@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-
 import 'package:LJF_admin/core/styles/colors.dart';
 import 'package:LJF_admin/core/styles/styles.dart';
 import 'package:LJF_admin/core/widgets/other/custom_text.dart';
@@ -14,6 +13,8 @@ class AdminTeamCard extends StatelessWidget {
   final int rank;
   final VoidCallback onAddPoints;
   final VoidCallback onManagePowers;
+  final VoidCallback onUpdateCarProgress;
+  final VoidCallback onUpdateBankBalance;
 
   const AdminTeamCard({
     super.key,
@@ -21,6 +22,8 @@ class AdminTeamCard extends StatelessWidget {
     required this.rank,
     required this.onAddPoints,
     required this.onManagePowers,
+    required this.onUpdateCarProgress,
+    required this.onUpdateBankBalance,
   });
 
   Color get _teamColor {
@@ -40,6 +43,14 @@ class AdminTeamCard extends StatelessWidget {
     } catch (_) {
       return null;
     }
+  }
+
+  Color get _carProgressColor {
+    final p = team.carCompletionPercentage;
+    if (p >= 100) return ColorManager.success;
+    if (p >= 75) return ColorManager.primary;
+    if (p >= 40) return ColorManager.secondary;
+    return ColorManager.error;
   }
 
   @override
@@ -140,6 +151,37 @@ class AdminTeamCard extends StatelessWidget {
             ),
 
             SizedBox(height: 12.h),
+
+            // ── Car progress + bank balance row ─────────
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: onUpdateCarProgress,
+                    child: _MiniStat(
+                      icon: Icons.directions_car_rounded,
+                      color: _carProgressColor,
+                      label: '${team.carCompletionPercentage.toInt()}%',
+                      sublabel: 'Car Build',
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8.w),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: onUpdateBankBalance,
+                    child: _MiniStat(
+                      icon: Icons.account_balance_wallet_rounded,
+                      color: ColorManager.primary,
+                      label: team.bankBalance.toStringAsFixed(0),
+                      sublabel: 'Balance',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 12.h),
             const Divider(color: Colors.white12),
             SizedBox(height: 10.h),
 
@@ -187,6 +229,58 @@ class AdminTeamCard extends StatelessWidget {
       child: CustomText(
         text: team.name.isNotEmpty ? team.name[0] : '?',
         style: TextStyles.font14WhiteBold.copyWith(color: _teamColor),
+      ),
+    );
+  }
+}
+
+class _MiniStat extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final String label;
+  final String sublabel;
+
+  const _MiniStat({
+    required this.icon,
+    required this.color,
+    required this.label,
+    required this.sublabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(10.r),
+        border: Border.all(color: color.withOpacity(0.3)),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: color, size: 16.r),
+          SizedBox(width: 6.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomText(
+                  text: label,
+                  style: TextStyles.font13WhiteMedium
+                      .copyWith(color: color, fontWeight: FontWeight.bold),
+                ),
+                CustomText(
+                  text: sublabel,
+                  style: TextStyles.font11WhiteBold.copyWith(
+                    color: Colors.white38,
+                    fontSize: 9.sp,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

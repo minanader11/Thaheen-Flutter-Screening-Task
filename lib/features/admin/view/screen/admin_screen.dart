@@ -5,7 +5,12 @@ import 'package:LJF_admin/core/styles/styles.dart';
 
 import 'package:LJF_admin/core/widgets/other/custom_text.dart';
 import 'package:LJF_admin/features/admin/model/team_model.dart';
+import 'package:LJF_admin/features/admin/view/widgets/bank_certificate_section.dart';
+import 'package:LJF_admin/features/admin/view/widgets/create_bank_certificate_sheet.dart';
+import 'package:LJF_admin/features/admin/view/widgets/university_event_section.dart';
 import 'package:LJF_admin/features/admin/view/widgets/tasks_list_section.dart';
+import 'package:LJF_admin/features/admin/view/widgets/update_bank_balance_sheet.dart';
+import 'package:LJF_admin/features/admin/view/widgets/update_car_progress_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +36,7 @@ class _AdminScreenState extends State<AdminScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     context.read<AdminCubit>().init();
   }
 
@@ -43,7 +48,6 @@ class _AdminScreenState extends State<AdminScreen>
 
   // ── Action handlers ────────────────────────────────────
 
-  /// Opens the ADD POINTS sheet for [team].
   void _showAddPoints(BuildContext context, TeamModel team) {
     final cubit = context.read<AdminCubit>();
 
@@ -74,7 +78,6 @@ class _AdminScreenState extends State<AdminScreen>
     );
   }
 
-  /// Opens the MANAGE POWERS sheet for [team].
   void _showManagePowers(BuildContext context, TeamModel team) {
     final cubit = context.read<AdminCubit>();
 
@@ -125,18 +128,87 @@ class _AdminScreenState extends State<AdminScreen>
     );
   }
 
+  // ── New: Car progress ──────────────────────────────────
+  void _showUpdateCarProgress(BuildContext context, TeamModel team) {
+    final cubit = context.read<AdminCubit>();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => UpdateCarProgressSheet(
+        team: team,
+        onConfirm: (percentage) {
+          cubit.updateCarProgress(teamId: team.id, percentage: percentage);
+        },
+      ),
+    );
+  }
+
+  // ── New: Bank balance ──────────────────────────────────
+  void _showUpdateBankBalance(BuildContext context, TeamModel team) {
+    final cubit = context.read<AdminCubit>();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => Padding(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: UpdateBankBalanceSheet(
+          team: team,
+          onConfirm: ({newBalance, delta}) {
+            cubit.updateTeamBankBalance(
+              teamId: team.id,
+              newBalance: newBalance,
+              delta: delta,
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  // ── New: Create bank certificate ───────────────────────
+  void _showCreateBankCertificate(BuildContext context) {
+    final cubit = context.read<AdminCubit>();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => Padding(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: CreateBankCertificateSheet(
+          onConfirm: ({required durationMinutes, required percentageGain}) {
+            cubit.createBankCertificate(
+              durationMinutes: durationMinutes,
+              percentageGain: percentageGain,
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF07111E),
       body: BlocConsumer<AdminCubit, AdminState>(
         listener: (context, state) {
+          final failureStates = [
+            state.addPointsStatus,
+            state.createTaskStatus,
+            state.deleteTaskStatus,
+            state.activatePowerStatus,
+            state.deactivatePowerStatus,
+            state.updateCarProgressStatus,
+            state.updateBankBalanceStatus,
+            state.createBankCertificateStatus,
+            state.deleteBankCertificateStatus,
+            state.updateAttendeeCountStatus,
+            state.updateEventConfigStatus,
+          ];
           if (state.errorMessage.isNotEmpty &&
-              (state.addPointsStatus == AdminActionStatus.failure ||
-                  state.createTaskStatus == AdminActionStatus.failure ||
-                  state.deleteTaskStatus == AdminActionStatus.failure ||
-                  state.activatePowerStatus == AdminActionStatus.failure ||
-                  state.deactivatePowerStatus == AdminActionStatus.failure)) {
+              failureStates.contains(AdminActionStatus.failure)) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.errorMessage),
@@ -165,6 +237,8 @@ class _AdminScreenState extends State<AdminScreen>
                   state: state,
                   onAddPoints: (team) => _showAddPoints(context, team),
                   onManagePowers: (team) => _showManagePowers(context, team),
+                  onUpdateCarProgress: (team) => _showUpdateCarProgress(context, team),
+                  onUpdateBankBalance: (team) => _showUpdateBankBalance(context, team),
                 ),
 
                 // ── Tab 2 : Tasks ────────────────────────
@@ -172,13 +246,22 @@ class _AdminScreenState extends State<AdminScreen>
                   state: state,
                   onDelete: context.read<AdminCubit>().deleteTask,
                 ),
+
+                // ── Tab 3 : Bank ──────────────────────────
+                _BankTab(
+                  state: state,
+                  onAddCertificate: () => _showCreateBankCertificate(context),
+                  onDeleteCertificate: context.read<AdminCubit>().deleteBankCertificate,
+                ),
+
+                // ── Tab 4 : University / Event ───────────
+                _EventTab(state: state),
               ],
             ),
           );
         },
       ),
 
-      // FAB — only show on Tasks tab
       floatingActionButton: AnimatedBuilder(
         animation: _tabController,
         builder: (_, __) => _tabController.index == 1
@@ -242,6 +325,7 @@ class _AdminScreenState extends State<AdminScreen>
       ),
       bottom: TabBar(
         controller: _tabController,
+        isScrollable: true,
         indicatorColor: ColorManager.primary,
         indicatorWeight: 2.5,
         labelColor: ColorManager.primary,
@@ -249,12 +333,22 @@ class _AdminScreenState extends State<AdminScreen>
         tabs: [
           Tab(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(Icons.groups_outlined, size: 16.r),
                 SizedBox(width: 6.w),
+                CustomText(text: 'Teams (${state.teams.length})', style: TextStyles.font13WhiteMedium),
+              ],
+            ),
+          ),
+          Tab(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.task_outlined, size: 16.r),
+                SizedBox(width: 6.w),
                 CustomText(
-                  text: 'Teams (${state.teams.length})',
+                  text: 'Tasks (${state.dailyTasks.length + state.bonusTasks.length + state.flashTasks.length})',
                   style: TextStyles.font13WhiteMedium,
                 ),
               ],
@@ -262,15 +356,21 @@ class _AdminScreenState extends State<AdminScreen>
           ),
           Tab(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.task_outlined, size: 16.r),
+                Icon(Icons.account_balance_rounded, size: 16.r),
                 SizedBox(width: 6.w),
-                CustomText(
-                  text:
-                  'Tasks (${state.dailyTasks.length + state.bonusTasks.length + state.flashTasks.length})',
-                  style: TextStyles.font13WhiteMedium,
-                ),
+                CustomText(text: 'Bank', style: TextStyles.font13WhiteMedium),
+              ],
+            ),
+          ),
+          Tab(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.event_rounded, size: 16.r),
+                SizedBox(width: 6.w),
+                CustomText(text: 'Event', style: TextStyles.font13WhiteMedium),
               ],
             ),
           ),
@@ -286,13 +386,17 @@ class _AdminScreenState extends State<AdminScreen>
 
 class _TeamsTab extends StatelessWidget {
   final AdminState state;
-  final void Function(TeamModel team) onAddPoints;    // ← TeamModel, not int
-  final void Function(TeamModel team) onManagePowers; // ← TeamModel, not int
+  final void Function(TeamModel team) onAddPoints;
+  final void Function(TeamModel team) onManagePowers;
+  final void Function(TeamModel team) onUpdateCarProgress;
+  final void Function(TeamModel team) onUpdateBankBalance;
 
   const _TeamsTab({
     required this.state,
     required this.onAddPoints,
     required this.onManagePowers,
+    required this.onUpdateCarProgress,
+    required this.onUpdateBankBalance,
   });
 
   @override
@@ -315,8 +419,10 @@ class _TeamsTab extends StatelessWidget {
         return AdminTeamCard(
           team: team,
           rank: i + 1,
-          onAddPoints: () => onAddPoints(team),      // ← pass model, not index
-          onManagePowers: () => onManagePowers(team), // ← pass model, not index
+          onAddPoints: () => onAddPoints(team),
+          onManagePowers: () => onManagePowers(team),
+          onUpdateCarProgress: () => onUpdateCarProgress(team),
+          onUpdateBankBalance: () => onUpdateBankBalance(team),
         );
       },
     );
@@ -342,6 +448,68 @@ class _TasksTab extends StatelessWidget {
         bonusTasks: state.bonusTasks,
         flashTasks: state.flashTasks,
         onDeleteTask: onDelete,
+      ),
+    );
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// Bank tab
+// ═══════════════════════════════════════════════════════════
+
+class _BankTab extends StatelessWidget {
+  final AdminState state;
+  final VoidCallback onAddCertificate;
+  final void Function(int id) onDeleteCertificate;
+
+  const _BankTab({
+    required this.state,
+    required this.onAddCertificate,
+    required this.onDeleteCertificate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 100.h),
+      child: BankCertificatesSection(
+        certificates: state.bankCertificates,
+        onAdd: onAddCertificate,
+        onDelete: onDeleteCertificate,
+      ),
+    );
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// Event / University tab
+// ═══════════════════════════════════════════════════════════
+
+class _EventTab extends StatelessWidget {
+  final AdminState state;
+
+  const _EventTab({required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    final cubit = context.read<AdminCubit>();
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 100.h),
+      child: UniversityEventSection(
+        attendeeCount: state.attendeeCount,
+        eventConfig: state.eventConfig,
+        onIncrementAttendee: cubit.incrementAttendeeCount,
+        onSetAttendeeCount: cubit.setAttendeeCount,
+        onSetRaceStartTime: (raceStartTime) {
+          final config = state.eventConfig;
+          cubit.updateEventConfig(
+            eventName: config?.eventName ?? 'Bezradoor',
+            eventStartTime: config?.eventStartTime ?? DateTime.now(),
+            eventDurationHours: config?.eventDurationHours ?? 5,
+            raceStartTime: raceStartTime,
+          );
+        },
       ),
     );
   }

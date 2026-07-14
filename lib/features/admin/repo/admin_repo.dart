@@ -1,4 +1,6 @@
 import 'package:LJF_admin/core/networking/api_result/api_result.dart';
+import 'package:LJF_admin/features/admin/model/bank_certificate_model.dart';
+import 'package:LJF_admin/features/admin/model/event_config_model.dart';
 import 'package:LJF_admin/features/admin/model/task_model.dart';
 import 'package:LJF_admin/features/admin/model/team_model.dart';
 
@@ -35,4 +37,43 @@ abstract class AdminRepo {
 
   /// Deactivate the currently active superpower for a team.
   Future<ApiResult<void>> deactivateSuperPower({required int teamId});
+
+
+  // ── New: Car progress ──────────────────────────────────────
+  Future<ApiResult<TeamModel>> updateCarProgress({
+    required int teamId,
+    required double percentage,
+  });
+
+  // ── New: Bank ────────────────────────────────────────────────
+  Future<ApiResult<List<BankCertificateModel>>> getBankCertificates();
+
+  Future<ApiResult<BankCertificateModel>> createBankCertificate({
+    required int durationMinutes,
+    required double percentageGain,
+  });
+
+  Future<ApiResult<void>> deleteBankCertificate(int certificateId);
+
+  Future<ApiResult<double>> updateTeamBankBalance({
+    required int teamId,
+    double? newBalance,
+    double? delta,
+  });
+
+  // ── New: University ─────────────────────────────────────────
+  Future<ApiResult<int>> updateAttendeeCount({
+    int? count,
+    int? delta,
+  });
+
+  // ── New: Event config ───────────────────────────────────────
+  Future<ApiResult<EventConfigModel>> getEventConfig();
+
+  Future<ApiResult<EventConfigModel>> updateEventConfig({
+    required String eventName,
+    required DateTime eventStartTime,
+    required int eventDurationHours,
+    required DateTime raceStartTime,
+  });
 }

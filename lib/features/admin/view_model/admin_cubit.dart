@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:LJF_admin/features/admin/model/event_config_model.dart';
 import 'package:LJF_admin/features/admin/model/task_model.dart';
 import 'package:LJF_admin/features/admin/model/team_model.dart';
 import 'package:LJF_admin/features/admin/model/team_super_power_model.dart';
@@ -26,14 +27,22 @@ class AdminCubit extends Cubit<AdminState> {
   // ══════════════════════════════════════════════════════════════════
 
   Future<void> init() async {
+    try{
     emit(state.copyWith(isLoading: true));
-    await Future.wait([_loadTeams(), _loadTasks()]);
+    await Future.wait([
+      _loadTeams(),
+      _loadTasks(),
+      _loadBankCertificates(),
+      _loadEventConfig(),
+    ]);
     await _initSignalR();
-    emit(state.copyWith(isLoading: false));
+    emit(state.copyWith(isLoading: false));} catch(e){
+      log("errorrrrrSignalr ${e}");
+    }
   }
 
   // ══════════════════════════════════════════════════════════════════
-  // API Calls
+  // API Calls (existing)
   // ══════════════════════════════════════════════════════════════════
 
   Future<void> _loadTeams() async {
@@ -150,6 +159,191 @@ class AdminCubit extends Cubit<AdminState> {
       emit(state.copyWith(
         deactivatePowerStatus: AdminActionStatus.failure,
         errorMessage: res.error?.message ?? 'Failed to deactivate power',
+      ));
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // NEW: Car progress
+  // ══════════════════════════════════════════════════════════════════
+
+  Future<void> updateCarProgress({
+    required int teamId,
+    required double percentage,
+  }) async {
+    emit(state.copyWith(updateCarProgressStatus: AdminActionStatus.loading));
+    final res = await repo.updateCarProgress(teamId: teamId, percentage: percentage);
+    if (res.isSuccess) {
+      final updatedTeam = res.data!;
+      final updatedTeams = state.teams
+          .map((t) => t.id == updatedTeam.id ? updatedTeam : t)
+          .toList();
+      emit(state.copyWith(
+        teams: updatedTeams,
+        updateCarProgressStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        updateCarProgressStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to update car progress',
+      ));
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // NEW: Bank
+  // ══════════════════════════════════════════════════════════════════
+
+  Future<void> _loadBankCertificates() async {
+    emit(state.copyWith(loadBankCertificatesStatus: AdminActionStatus.loading));
+    final res = await repo.getBankCertificates();
+    if (res.isSuccess) {
+      emit(state.copyWith(
+        bankCertificates: res.data ?? [],
+        loadBankCertificatesStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        loadBankCertificatesStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to load bank certificates',
+      ));
+    }
+  }
+
+  Future<void> createBankCertificate({
+    required int durationMinutes,
+    required double percentageGain,
+  }) async {
+    emit(state.copyWith(createBankCertificateStatus: AdminActionStatus.loading));
+    final res = await repo.createBankCertificate(
+      durationMinutes: durationMinutes,
+      percentageGain: percentageGain,
+    );
+    if (res.isSuccess) {
+      emit(state.copyWith(
+        bankCertificates: [...state.bankCertificates, res.data!],
+        createBankCertificateStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        createBankCertificateStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to create bank certificate',
+      ));
+    }
+  }
+
+  Future<void> deleteBankCertificate(int certificateId) async {
+    emit(state.copyWith(deleteBankCertificateStatus: AdminActionStatus.loading));
+    final res = await repo.deleteBankCertificate(certificateId);
+    if (res.isSuccess) {
+      emit(state.copyWith(
+        bankCertificates:
+        state.bankCertificates.where((c) => c.id != certificateId).toList(),
+        deleteBankCertificateStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        deleteBankCertificateStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to delete bank certificate',
+      ));
+    }
+  }
+
+  /// Pass [newBalance] to set an absolute value, or [delta] to add/subtract.
+  Future<void> updateTeamBankBalance({
+    required int teamId,
+    double? newBalance,
+    double? delta,
+  }) async {
+    emit(state.copyWith(updateBankBalanceStatus: AdminActionStatus.loading));
+    final res = await repo.updateTeamBankBalance(
+      teamId: teamId,
+      newBalance: newBalance,
+      delta: delta,
+    );
+    if (res.isSuccess) {
+      final balance = res.data!;
+      final updatedTeams = state.teams
+          .map((t) => t.id == teamId ? t.copyWith(bankBalance: balance) : t)
+          .toList();
+      emit(state.copyWith(
+        teams: updatedTeams,
+        updateBankBalanceStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        updateBankBalanceStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to update bank balance',
+      ));
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // NEW: University
+  // ══════════════════════════════════════════════════════════════════
+
+  Future<void> incrementAttendeeCount() => _updateAttendeeCount(delta: 1);
+
+  Future<void> setAttendeeCount(int count) => _updateAttendeeCount(count: count);
+
+  Future<void> _updateAttendeeCount({int? count, int? delta}) async {
+    emit(state.copyWith(updateAttendeeCountStatus: AdminActionStatus.loading));
+    final res = await repo.updateAttendeeCount(count: count, delta: delta);
+    if (res.isSuccess) {
+      emit(state.copyWith(
+        attendeeCount: res.data!,
+        updateAttendeeCountStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        updateAttendeeCountStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to update attendee count',
+      ));
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // NEW: Event config
+  // ══════════════════════════════════════════════════════════════════
+
+  Future<void> _loadEventConfig() async {
+    emit(state.copyWith(loadEventConfigStatus: AdminActionStatus.loading));
+    final res = await repo.getEventConfig();
+    if (res.isSuccess) {
+      emit(state.copyWith(
+        eventConfig: res.data,
+        loadEventConfigStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        loadEventConfigStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to load event config',
+      ));
+    }
+  }
+
+  Future<void> updateEventConfig({
+    required String eventName,
+    required DateTime eventStartTime,
+    required int eventDurationHours,
+    required DateTime raceStartTime,
+  }) async {
+    emit(state.copyWith(updateEventConfigStatus: AdminActionStatus.loading));
+    final res = await repo.updateEventConfig(
+      eventName: eventName,
+      eventStartTime: eventStartTime,
+      eventDurationHours: eventDurationHours,
+      raceStartTime: raceStartTime,
+    );
+    if (res.isSuccess) {
+      emit(state.copyWith(
+        eventConfig: res.data,
+        updateEventConfigStatus: AdminActionStatus.success,
+      ));
+    } else {
+      emit(state.copyWith(
+        updateEventConfigStatus: AdminActionStatus.failure,
+        errorMessage: res.error?.message ?? 'Failed to update event config',
       ));
     }
   }
@@ -283,6 +477,59 @@ class AdminCubit extends Cubit<AdminState> {
         ));
       } catch (e) {
         log('TaskDeleted handler error: $e');
+      }
+    });
+
+    // ── CarProgressUpdated ───────────────────────────────
+    hubConnection!.on('CarProgressUpdated', (args) {
+      try {
+        if (args == null || args.length < 2) return;
+        final teamId = args[0] as int;
+        final percentage = (args[1] as num).toDouble();
+        final updated = state.teams
+            .map((t) => t.id == teamId
+            ? t.copyWith(carCompletionPercentage: percentage)
+            : t)
+            .toList();
+        emit(state.copyWith(teams: updated));
+      } catch (e) {
+        log('CarProgressUpdated handler error: $e');
+      }
+    });
+
+    // ── BankBalanceUpdated ───────────────────────────────
+    hubConnection!.on('BankBalanceUpdated', (args) {
+      try {
+        if (args == null || args.length < 2) return;
+        final teamId = args[0] as int;
+        final balance = (args[1] as num).toDouble();
+        final updated = state.teams
+            .map((t) => t.id == teamId ? t.copyWith(bankBalance: balance) : t)
+            .toList();
+        emit(state.copyWith(teams: updated));
+      } catch (e) {
+        log('BankBalanceUpdated handler error: $e');
+      }
+    });
+
+    // ── AttendeeCountUpdated ─────────────────────────────
+    hubConnection!.on('AttendeeCountUpdated', (args) {
+      try {
+        if (args == null || args.isEmpty) return;
+        emit(state.copyWith(attendeeCount: args[0] as int));
+      } catch (e) {
+        log('AttendeeCountUpdated handler error: $e');
+      }
+    });
+
+    // ── RaceCountdownSynced ──────────────────────────────
+    hubConnection!.on('RaceCountdownSynced', (args) {
+      try {
+        if (args == null || args.isEmpty) return;
+        final map = Map<String, dynamic>.from(args[0] as Map);
+        emit(state.copyWith(eventConfig: EventConfigModel.fromJson(map)));
+      } catch (e) {
+        log('RaceCountdownSynced handler error: $e');
       }
     });
   }
