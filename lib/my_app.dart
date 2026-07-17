@@ -109,6 +109,14 @@ class MyApp extends StatelessWidget {
             title: 'Logos Junior Forum Egypt 2026',
             home: const AdminScreen(),
             debugShowCheckedModeBanner: false,
+             locale: Locale("en"),
+            supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
           );
         },
       ),

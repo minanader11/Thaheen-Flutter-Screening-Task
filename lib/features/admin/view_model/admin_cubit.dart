@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:LJF_admin/features/admin/model/bank_certificate_model.dart';
 import 'package:LJF_admin/features/admin/model/event_config_model.dart';
 import 'package:LJF_admin/features/admin/model/task_model.dart';
 import 'package:LJF_admin/features/admin/model/team_model.dart';
@@ -36,11 +37,19 @@ class AdminCubit extends Cubit<AdminState> {
       _loadEventConfig(),
     ]);
     await _initSignalR();
-    emit(state.copyWith(isLoading: false));} catch(e){
+    emit(state.copyWith(isLoading: false));
+    } catch(e){
       log("errorrrrrSignalr ${e}");
     }
   }
-
+  Future<void> reconnectSignalR() async {
+    try {
+      await hubConnection?.stop();
+    } catch (e) {
+      log('reconnectSignalR — stop error: $e');
+    }
+    await _initSignalR();
+  }
   // ══════════════════════════════════════════════════════════════════
   // API Calls (existing)
   // ══════════════════════════════════════════════════════════════════
@@ -255,6 +264,7 @@ class AdminCubit extends Cubit<AdminState> {
     double? newBalance,
     double? delta,
   }) async {
+
     emit(state.copyWith(updateBankBalanceStatus: AdminActionStatus.loading));
     final res = await repo.updateTeamBankBalance(
       teamId: teamId,
@@ -530,6 +540,31 @@ class AdminCubit extends Cubit<AdminState> {
         emit(state.copyWith(eventConfig: EventConfigModel.fromJson(map)));
       } catch (e) {
         log('RaceCountdownSynced handler error: $e');
+      }
+    });
+    // ── CertificateCatalogAdded ──────────────────────────
+    hubConnection!.on('CertificateCatalogAdded', (args) {
+      try {
+        if (args == null || args.isEmpty) return;
+        final map = Map<String, dynamic>.from(args[0] as Map);
+        final cert = BankCertificateModel.fromJson(map);
+        final withoutDuplicate = state.bankCertificates.where((c) => c.id != cert.id).toList();
+        emit(state.copyWith(bankCertificates: [...withoutDuplicate, cert]));
+      } catch (e) {
+        log('CertificateCatalogAdded handler error: $e');
+      }
+    });
+
+// ── CertificateCatalogDeleted ────────────────────────
+    hubConnection!.on('CertificateCatalogDeleted', (args) {
+      try {
+        if (args == null || args.isEmpty) return;
+        final id = args[0] as int;
+        emit(state.copyWith(
+          bankCertificates: state.bankCertificates.where((c) => c.id != id).toList(),
+        ));
+      } catch (e) {
+        log('CertificateCatalogDeleted handler error: $e');
       }
     });
   }

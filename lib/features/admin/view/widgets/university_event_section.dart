@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:LJF_admin/core/styles/colors.dart';
 import 'package:LJF_admin/core/styles/styles.dart';
 import 'package:LJF_admin/core/widgets/other/custom_text.dart';
@@ -173,10 +175,12 @@ class UniversityEventSection extends StatelessWidget {
   }
 
   Future<void> _pickDateTime(BuildContext context) async {
+    try{
+    log("pickDateTime");
     final now = DateTime.now();
     final date = await showDatePicker(
       context: context,
-      initialDate: eventConfig?.raceStartTime ?? now,
+      initialDate:  now,
       firstDate: now.subtract(const Duration(days: 1)),
       lastDate: now.add(const Duration(days: 7)),
     );
@@ -188,6 +192,8 @@ class UniversityEventSection extends StatelessWidget {
     );
     if (time == null) return;
 
-    onSetRaceStartTime(DateTime(date.year, date.month, date.day, time.hour, time.minute));
+    onSetRaceStartTime(DateTime(date.year, date.month, date.day, time.hour, time.minute));}catch(e){
+      log("errorrrrrrr pickdate ${e}");
+    }
   }
 }

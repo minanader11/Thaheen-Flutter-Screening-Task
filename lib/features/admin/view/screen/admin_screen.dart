@@ -30,20 +30,29 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver  {
   late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+    WidgetsBinding.instance.addObserver(this);
     context.read<AdminCubit>().init();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _tabController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      context.read<AdminCubit>().reconnectSignalR();
+    }
   }
 
   // ── Action handlers ────────────────────────────────────
@@ -316,6 +325,19 @@ class _AdminScreenState extends State<AdminScreen>
                         ? Colors.greenAccent
                         : Colors.redAccent,
                     fontSize: 10.sp,
+                  ),
+                ),
+                SizedBox(width: 6.w),
+                InkWell(
+                  onTap: () => context.read<AdminCubit>().reconnectSignalR(),
+                  borderRadius: BorderRadius.circular(20.r),
+                  child: Padding(
+                    padding: EdgeInsets.all(2.w),
+                    child: Icon(
+                      Icons.refresh_rounded,
+                      size: 14.r,
+                      color: Colors.white70,
+                    ),
                   ),
                 ),
               ],
