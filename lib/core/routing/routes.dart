@@ -19,5 +19,6 @@ class Routes {
 
   static const socialSecurityScreen = '/SocialSecurityScreen';
   static const availableService = '/availableService';
+  static const jobOrderForm = '/jobOrderForm';
 
 }

@@ -13,6 +13,8 @@ import 'package:LJF_admin/core/styles/colors.dart';
 import 'package:LJF_admin/core/styles/styles.dart';
 import 'package:LJF_admin/features/admin/view/screen/admin_screen.dart';
 import 'package:LJF_admin/features/admin/view_model/admin_cubit.dart';
+import 'package:LJF_admin/features/job_order/view/screens/job_order_form_screen.dart';
+import 'package:LJF_admin/features/job_order/view_model/job_order_cubit.dart';
 
 import 'package:LJF_admin/main.dart';
 
@@ -95,21 +97,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<AdminCubit>(),
-            ),
-          ],
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<AdminCubit>(),
+        ),
+          BlocProvider(
+          create: (context) => getIt<JobOrderCubit>(),
+        ),
+      ],
       child: ScreenUtilInit(
-        designSize:const Size(390, 844), // scoreboard is 1920x1080
+        designSize: const Size(390, 844), // scoreboard is 1920x1080
         minTextAdapt: true,
         splitScreenMode: false,
         builder: (context, child) {
           return MaterialApp(
-            title: 'Logos Junior Forum Egypt 2026',
-            home: const AdminScreen(),
+            title: 'Scoring admin app LJF 2026',
+            home: const JobOrderFormScreen(),
             debugShowCheckedModeBanner: false,
-             locale: Locale("en"),
+            locale: Locale("en"),
             supportedLocales: S.delegate.supportedLocales,
             localizationsDelegates: const [
               S.delegate,
