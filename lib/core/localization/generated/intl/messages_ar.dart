@@ -81,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "applySocialSecurityDescription": MessageLookupByLibrary.simpleMessage(
       "تتيح هذه الخدمة طلب الحصول على معاش الضمان الاجتماعية للفئات التالية: الأرملة، المطلقة، الأسرة المحتاجة، المعاق، اليتيم، العاجز عن العمل، المسن، أسرة السجين، الزوجة المهجورة، وأسرة الفقيد، كذلك مساعدة بدل الخادم. وحدد قرار مجلس الوزراء رقم (46) لسنة 2014 بشأن تحديد قيمة المعاش المستحق للفئات المنصوص عليها في القانون رقم (38) لسنة 1995 بشأن الضمان الاجتماعي وقواعد منحه.",
     ),
+    "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "associationsAndPrivateInstitutions": MessageLookupByLibrary.simpleMessage(
       "الجمعيات والمؤسسات الخاصة",
     ),
@@ -114,12 +115,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "citizenHousing": MessageLookupByLibrary.simpleMessage("إسكان المواطنين"),
     "city": MessageLookupByLibrary.simpleMessage("مدينة"),
+    "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "commercialRegistrationNumber": MessageLookupByLibrary.simpleMessage(
       "رقم السجل التجاري",
     ),
     "commitment": MessageLookupByLibrary.simpleMessage("التعهد"),
     "communityCare": MessageLookupByLibrary.simpleMessage("الرعاية المجتمعية"),
     "completeData": MessageLookupByLibrary.simpleMessage("استكمال البيانات"),
+    "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
     "completedRequests": MessageLookupByLibrary.simpleMessage(
       "الطلبات المنتهية",
     ),
@@ -131,10 +134,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "اسم صاحب الرقم...",
     ),
     "continueLater": MessageLookupByLibrary.simpleMessage("المتابعة لاحقاً"),
+    "continueWatching": MessageLookupByLibrary.simpleMessage("متابعة المشاهدة"),
     "continue_progress": MessageLookupByLibrary.simpleMessage("المتابعة"),
     "correspondenceAddresses": MessageLookupByLibrary.simpleMessage(
       "عناوين المراسلة",
     ),
+    "courseDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الدورة"),
+    "courses": MessageLookupByLibrary.simpleMessage("الدورات"),
+    "coursesLoading": MessageLookupByLibrary.simpleMessage(
+      "جاري تحميل الدورات...",
+    ),
+    "coursesTitle": MessageLookupByLibrary.simpleMessage("الدورات التعليمية"),
+    "darkMode": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
     "dataRegisteredSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل البيانات بنجاح",
     ),
@@ -143,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "أتعهد بأن البيانات المدخلة صحيحة وأن المستندات المدرجة أصلية ومستخرجة من مصادرها الصحيحة.",
     ),
     "domesticWorkerAllowance": MessageLookupByLibrary.simpleMessage("بدل خادم"),
+    "duration": MessageLookupByLibrary.simpleMessage("المدة"),
     "editData": MessageLookupByLibrary.simpleMessage("تعديل البيانات"),
     "editEmergencyNumbers": MessageLookupByLibrary.simpleMessage(
       "تعديل أرقام الطوارئ",
@@ -153,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emergencyNumbersInfo": MessageLookupByLibrary.simpleMessage(
       "أرقام الطوارئ تحفظ في محفظة الهاتف من أجل الوصول السريع للأقارب في حالات الطوارئ.",
     ),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enjoyGovServices": MessageLookupByLibrary.simpleMessage(
       "تمتع بأكثر من 60 خدمة حكومية مقدمة من وزارة التنمية الاجتماعية والاسرة",
     ),
@@ -194,6 +207,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "entryExitRecord": MessageLookupByLibrary.simpleMessage(
       "حركة الدخول والخروج",
     ),
+    "errorLoadingCourse": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ أثناء تحميل تفاصيل الدورة",
+    ),
+    "errorLoadingCourses": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ أثناء تحميل الدورات",
+    ),
+    "errorLoadingLesson": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ أثناء تحميل الدرس",
+    ),
+    "exitFullscreen": MessageLookupByLibrary.simpleMessage(
+      "الخروج من ملء الشاشة",
+    ),
     "failedAction": m0,
     "faliarDes": MessageLookupByLibrary.simpleMessage(
       "عذراً. يبدو ان هناك مشكلة تقنية فى الخوادم الخاصة بنا. تم حفظ طلبك ك مسودة برجاء محاولة الارسال فى وقت لاحق",
@@ -205,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الاول"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "fullscreen": MessageLookupByLibrary.simpleMessage("ملء الشاشة"),
     "gender": MessageLookupByLibrary.simpleMessage("النوع"),
     "getService": MessageLookupByLibrary.simpleMessage("احصل على الخدمة"),
     "governmentServicesDetails": MessageLookupByLibrary.simpleMessage(
@@ -219,7 +245,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "houseNumber": MessageLookupByLibrary.simpleMessage("رقم المنزل"),
     "idCard": MessageLookupByLibrary.simpleMessage("البطاقة الشخصية"),
     "idNumber": MessageLookupByLibrary.simpleMessage("رقم الهوية"),
+    "inProgress": MessageLookupByLibrary.simpleMessage("قيد المشاهدة"),
     "inheritanceShare": MessageLookupByLibrary.simpleMessage("نصيب من متوفى"),
+    "instructor": MessageLookupByLibrary.simpleMessage("المحاضر"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الاخير"),
     "latestNewsAndAnnouncements": MessageLookupByLibrary.simpleMessage(
@@ -228,6 +256,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "learnMoreAboutRequestStatus": MessageLookupByLibrary.simpleMessage(
       "اعرف اكثر عن حالة طلبك",
     ),
+    "lessonLocked": MessageLookupByLibrary.simpleMessage(
+      "يرجى إكمال الدروس السابقة أولاً",
+    ),
+    "lessons": MessageLookupByLibrary.simpleMessage("دروس"),
+    "lightMode": MessageLookupByLibrary.simpleMessage("الوضع النهاري"),
+    "locked": MessageLookupByLibrary.simpleMessage("مقفل"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginForServices": MessageLookupByLibrary.simpleMessage(
       "سجل دخولك من اجل ارسال ومتابعة طلبات الخدمات الحكومية المختلفة",
@@ -263,19 +297,27 @@ class MessageLookup extends MessageLookupByLibrary {
       "الأخبار والإعلانات",
     ),
     "next": MessageLookupByLibrary.simpleMessage("التالى"),
+    "nextLesson": MessageLookupByLibrary.simpleMessage("الدرس التالي"),
     "nextStep": MessageLookupByLibrary.simpleMessage("الخطوة التالية"),
+    "noCourses": MessageLookupByLibrary.simpleMessage("لا توجد دورات متاحة"),
+    "noLessons": MessageLookupByLibrary.simpleMessage("لا توجد دروس متاحة"),
+    "normalSpeed": MessageLookupByLibrary.simpleMessage("عادي"),
     "notAMemberYet": MessageLookupByLibrary.simpleMessage(
       "لست عضواً حتى الان ؟",
     ),
     "notAdded": MessageLookupByLibrary.simpleMessage("لم يتم الإدراج"),
     "notEligible": MessageLookupByLibrary.simpleMessage("غير مستوفى للشروط"),
+    "notStarted": MessageLookupByLibrary.simpleMessage("لم يبدأ"),
     "ongoingRequests": MessageLookupByLibrary.simpleMessage("الطلبات الجارية"),
     "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
     "optionalDocuments": MessageLookupByLibrary.simpleMessage(
       "المستندات الاختيارية المدرجة",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "pause": MessageLookupByLibrary.simpleMessage("إيقاف مؤقت"),
     "personalInquiry": MessageLookupByLibrary.simpleMessage("الاستعلام الشخصي"),
+    "play": MessageLookupByLibrary.simpleMessage("تشغيل"),
+    "playbackSpeed": MessageLookupByLibrary.simpleMessage("سرعة التشغيل"),
     "pleaseCompleteTheFollowingData": MessageLookupByLibrary.simpleMessage(
       "برجاء استكمال البيانات التالية",
     ),
@@ -321,7 +363,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectGender": MessageLookupByLibrary.simpleMessage(
       "برجاء اختر النوع",
     ),
+    "previousLesson": MessageLookupByLibrary.simpleMessage("الدرس السابق"),
     "processingTime30Days": MessageLookupByLibrary.simpleMessage("30 يوم عمل"),
+    "progress": MessageLookupByLibrary.simpleMessage("التقدم"),
     "realEstateRegistrationDocs": MessageLookupByLibrary.simpleMessage(
       "كتب التسجيل العقاري",
     ),
@@ -333,6 +377,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "registerNow": MessageLookupByLibrary.simpleMessage("سجل الان"),
     "rentalContract": MessageLookupByLibrary.simpleMessage("عقد الإيجار"),
+    "replay": MessageLookupByLibrary.simpleMessage("إعادة التشغيل"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "requestEnd": MessageLookupByLibrary.simpleMessage(
       "نهاية الطلب (بحد أقصى 30 يوماً)",
@@ -348,6 +393,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "المستندات المطلوبة",
     ),
     "retirementSalary": MessageLookupByLibrary.simpleMessage("الراتب التقاعدي"),
+    "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "reviewBeforeSubmit": MessageLookupByLibrary.simpleMessage(
       "برجاء مراجعة البيانات المدخلة جيداً قبل الإرسال. لن تتمكن من تعديل بيانات أو مرفقات الطلب بعد هذه الخطوة",
     ),
@@ -360,6 +406,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchInYourRequests": MessageLookupByLibrary.simpleMessage(
       "ابحث فى طلباتك",
     ),
+    "sections": MessageLookupByLibrary.simpleMessage("الأقسام"),
     "seeMore": MessageLookupByLibrary.simpleMessage("عرض المزيد..."),
     "selectGender": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "sendAgain": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
@@ -390,6 +437,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "servicesPageTitle": MessageLookupByLibrary.simpleMessage(
       "صفحة الخدمات المتاحة",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "showConditions": MessageLookupByLibrary.simpleMessage("عرض الشروط"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "skipDataRegistrationNote": MessageLookupByLibrary.simpleMessage(
@@ -405,9 +453,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "socialSecuritySubscription": MessageLookupByLibrary.simpleMessage(
       "الاشتراك في الضمان الاجتماعي",
     ),
+    "speed": MessageLookupByLibrary.simpleMessage("السرعة"),
     "sslCertificateIsInvalid": MessageLookupByLibrary.simpleMessage(
       "شهادة SSL غير صالحة.",
     ),
+    "statusInProgress": MessageLookupByLibrary.simpleMessage("قيد المشاهدة"),
     "street": MessageLookupByLibrary.simpleMessage("شارع"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("إرسال الطلب"),
     "submitSocialSecurityRequest": MessageLookupByLibrary.simpleMessage(
@@ -417,12 +467,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "technicalErrorDraftSaved": MessageLookupByLibrary.simpleMessage(
       "عذراً. يبدو أن هناك مشكلة تقنية في الخوادم الخاصة بنا. تم حفظ طلبك كمسودة، برجاء محاولة الإرسال في وقت لاحق.",
     ),
+    "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "trackRequest": MessageLookupByLibrary.simpleMessage("تابع طلبك حتى يكتمل"),
     "unclearOrIncorrectDataFound": MessageLookupByLibrary.simpleMessage(
       "تم العثور على بعض البيانات الغير واضحة / صحيحة فى طلبكم. برجاء تفقد الملحوظات الاتية واعادة ارسال الطلب للاستمرار.",
     ),
+    "unlocked": MessageLookupByLibrary.simpleMessage("مفتوح"),
     "username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
     "verifyData": MessageLookupByLibrary.simpleMessage("التأكد من البيانات"),
+    "videoLoadError": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ أثناء تحميل الفيديو",
+    ),
     "view": MessageLookupByLibrary.simpleMessage("عرض"),
     "viewAvailableServices": MessageLookupByLibrary.simpleMessage(
       "عرض الخدمات المتاحة",

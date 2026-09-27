@@ -28,10 +28,9 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -1913,6 +1912,281 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Courses`
+  String get coursesTitle {
+    return Intl.message('Courses', name: 'coursesTitle', desc: '', args: []);
+  }
+
+  /// `Courses`
+  String get courses {
+    return Intl.message('Courses', name: 'courses', desc: '', args: []);
+  }
+
+  /// `No courses available`
+  String get noCourses {
+    return Intl.message(
+      'No courses available',
+      name: 'noCourses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading courses...`
+  String get coursesLoading {
+    return Intl.message(
+      'Loading courses...',
+      name: 'coursesLoading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Watching`
+  String get continueWatching {
+    return Intl.message(
+      'Continue Watching',
+      name: 'continueWatching',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading courses`
+  String get errorLoadingCourses {
+    return Intl.message(
+      'Error loading courses',
+      name: 'errorLoadingCourses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lessons`
+  String get lessons {
+    return Intl.message('Lessons', name: 'lessons', desc: '', args: []);
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `Course Details`
+  String get courseDetails {
+    return Intl.message(
+      'Course Details',
+      name: 'courseDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading course details`
+  String get errorLoadingCourse {
+    return Intl.message(
+      'Error loading course details',
+      name: 'errorLoadingCourse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading lesson`
+  String get errorLoadingLesson {
+    return Intl.message(
+      'Error loading lesson',
+      name: 'errorLoadingLesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No lessons available`
+  String get noLessons {
+    return Intl.message(
+      'No lessons available',
+      name: 'noLessons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress`
+  String get progress {
+    return Intl.message('Progress', name: 'progress', desc: '', args: []);
+  }
+
+  /// `Completed`
+  String get completed {
+    return Intl.message('Completed', name: 'completed', desc: '', args: []);
+  }
+
+  /// `In Progress`
+  String get inProgress {
+    return Intl.message('In Progress', name: 'inProgress', desc: '', args: []);
+  }
+
+  /// `In Progress`
+  String get statusInProgress {
+    return Intl.message(
+      'In Progress',
+      name: 'statusInProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Started`
+  String get notStarted {
+    return Intl.message('Not Started', name: 'notStarted', desc: '', args: []);
+  }
+
+  /// `Please complete previous lessons first`
+  String get lessonLocked {
+    return Intl.message(
+      'Please complete previous lessons first',
+      name: 'lessonLocked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locked`
+  String get locked {
+    return Intl.message('Locked', name: 'locked', desc: '', args: []);
+  }
+
+  /// `Unlocked`
+  String get unlocked {
+    return Intl.message('Unlocked', name: 'unlocked', desc: '', args: []);
+  }
+
+  /// `Instructor`
+  String get instructor {
+    return Intl.message('Instructor', name: 'instructor', desc: '', args: []);
+  }
+
+  /// `Sections`
+  String get sections {
+    return Intl.message('Sections', name: 'sections', desc: '', args: []);
+  }
+
+  /// `Error loading video`
+  String get videoLoadError {
+    return Intl.message(
+      'Error loading video',
+      name: 'videoLoadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next lesson`
+  String get nextLesson {
+    return Intl.message('Next lesson', name: 'nextLesson', desc: '', args: []);
+  }
+
+  /// `Previous lesson`
+  String get previousLesson {
+    return Intl.message(
+      'Previous lesson',
+      name: 'previousLesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Playback Speed`
+  String get playbackSpeed {
+    return Intl.message(
+      'Playback Speed',
+      name: 'playbackSpeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Normal`
+  String get normalSpeed {
+    return Intl.message('Normal', name: 'normalSpeed', desc: '', args: []);
+  }
+
+  /// `Speed`
+  String get speed {
+    return Intl.message('Speed', name: 'speed', desc: '', args: []);
+  }
+
+  /// `Play`
+  String get play {
+    return Intl.message('Play', name: 'play', desc: '', args: []);
+  }
+
+  /// `Pause`
+  String get pause {
+    return Intl.message('Pause', name: 'pause', desc: '', args: []);
+  }
+
+  /// `Replay`
+  String get replay {
+    return Intl.message('Replay', name: 'replay', desc: '', args: []);
+  }
+
+  /// `Fullscreen`
+  String get fullscreen {
+    return Intl.message('Fullscreen', name: 'fullscreen', desc: '', args: []);
+  }
+
+  /// `Exit Fullscreen`
+  String get exitFullscreen {
+    return Intl.message(
+      'Exit Fullscreen',
+      name: 'exitFullscreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration`
+  String get duration {
+    return Intl.message('Duration', name: 'duration', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message('English', name: 'english', desc: '', args: []);
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
+  }
+
+  /// `Light Mode`
+  String get lightMode {
+    return Intl.message('Light Mode', name: 'lightMode', desc: '', args: []);
+  }
+
+  /// `Dark Mode`
+  String get darkMode {
+    return Intl.message('Dark Mode', name: 'darkMode', desc: '', args: []);
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message('Close', name: 'close', desc: '', args: []);
   }
 }
 

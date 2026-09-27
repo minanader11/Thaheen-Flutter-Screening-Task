@@ -74,7 +74,7 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 48.sp,
     fontWeight: FontWeight.w900,
-    color: ColorManager.textPrimary,
+    // color: null → inherits theme's onSurface (works in light & dark mode)
     letterSpacing: -1.0,
   );
 
@@ -82,7 +82,6 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 36.sp,
     fontWeight: FontWeight.w800,
-    color: ColorManager.textPrimary,
     letterSpacing: -0.5,
   );
 
@@ -92,21 +91,18 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 28.sp,
     fontWeight: FontWeight.w700,
-    color: ColorManager.textPrimary,
   );
 
   static TextStyle headlineMedium = TextStyle(
     fontFamily: fontFamily,
     fontSize: 22.sp,
     fontWeight: FontWeight.w700,
-    color: ColorManager.textPrimary,
   );
 
   static TextStyle headlineSmall = TextStyle(
     fontFamily: fontFamily,
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
-    color: ColorManager.textPrimary,
   );
 
   // ── Title ─────────────────────────────────────────────────
@@ -115,14 +111,12 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color: ColorManager.textPrimary,
   );
 
   static TextStyle titleMedium = TextStyle(
     fontFamily: fontFamily,
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
-    color: ColorManager.textPrimary,
   );
 
   // ── Body ──────────────────────────────────────────────────
@@ -131,21 +125,19 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: ColorManager.textPrimary,
   );
 
   static TextStyle bodyMedium = TextStyle(
     fontFamily: fontFamily,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
-    color: ColorManager.textPrimary,
   );
 
   static TextStyle bodySmall = TextStyle(
     fontFamily: fontFamily,
     fontSize: 10.sp,
     fontWeight: FontWeight.w400,
-    color: ColorManager.textSecondary,
+    color: ColorManager.textSecondary, // intentionally muted
   );
 
   // ── Label ─────────────────────────────────────────────────
@@ -154,7 +146,6 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
-    color: ColorManager.textPrimary,
     letterSpacing: 0.5,
   );
 
@@ -162,7 +153,15 @@ class TextStyles {
     fontFamily: fontFamily,
     fontSize: 10.sp,
     fontWeight: FontWeight.w500,
-    color: ColorManager.textSecondary,
+    color: ColorManager.textSecondary, // intentionally muted
+    letterSpacing: 0.5,
+  );
+
+  static TextStyle labelSmall = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 9.sp,
+    fontWeight: FontWeight.w500,
+    color: ColorManager.textSecondary, // intentionally muted
     letterSpacing: 0.5,
   );
 

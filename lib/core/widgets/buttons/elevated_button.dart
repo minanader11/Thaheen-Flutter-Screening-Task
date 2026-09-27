@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:LJF_admin/core/widgets/other/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +7,7 @@ import 'package:LJF_admin/core/styles/colors.dart';
 import 'package:LJF_admin/core/styles/styles.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String title;
   final Widget? buttonChild;
   final double width;
@@ -67,8 +68,8 @@ class ElevatedButtonWidget extends StatelessWidget {
         // ),
         onPressed: onPressed,
         child: buttonChild ??
-            Text(
-              title,
+            CustomText(
+              text: title,
               style: textStyle,
             ),
       ),

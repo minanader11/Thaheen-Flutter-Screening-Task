@@ -20,7 +20,7 @@ class CustomText extends StatelessWidget {
   const CustomText({
     super.key,
     required this.text,
-    this.color = ColorManager.black,
+    this.color = ColorManager.textMuted, // only used when no `style` is given
     this.fontSize,
     this.style,
     this.textAlign,
@@ -41,7 +41,9 @@ class CustomText extends StatelessWidget {
       style: style ??
           TextStyle(
             fontSize: fontSize?.sp ?? FontManager.font16.sp,
-            color: color,
+            // Use theme's onSurface so the text adapts to light/dark mode.
+            // Only fall back to `color` field when explicitly needed.
+            color: Theme.of(context).colorScheme.onSurface,
             height: spacing,
             fontWeight: fontWeight,
             fontFamily: fontFamily ?? TextStyles.fontFamily,

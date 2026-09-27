@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   #dependency injection
   get_it: ^8.0.3
@@ -54,6 +56,9 @@ dependencies:
   firebase_core: ^4.9.0
   pdf: ^3.12.0
   printing: ^5.14.3
+  video_player: ^2.14.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -78,6 +83,8 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/json/
+    - assets/data/
+    - assets/videos/
 
   fonts:
     - family: Cairo
@@ -101,14 +108,14 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/LJF_logo_cropped.png"
+  image_path: "assets/images/thaheen_logo_cropped.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "assets/images/LJF_logo_cropped.png"
+    image_path: "assets/images/thaheen_logo.png"
 #    background_color: "#hexcode"
 #    theme_color: "#hexcode"
 flutter_intl:
   enabled: true
-  arb_dir: lib/core/localization/l10n
+  arb_dir: lib/l10n
   output_dir: lib/core/localization/generated

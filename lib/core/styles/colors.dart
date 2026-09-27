@@ -1,51 +1,49 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  // Defines color constants for the app
-  // Example : static const Color primaryColor = Color(0xFF3F51B5);
-  static const Color black = Colors.black;
-  static const Color white = Colors.white;
-  static const Color purple = Colors.purple;
-  static const Color green = Color(0xff20810A);
-  static const Color yellow = Color.fromARGB(255, 224, 204, 25);
-  static const Color red = Color.fromARGB(255, 173, 31, 21);
-  static const Color mainAppColor = Color(0xFF8A1538);
-  static const Color statusBarColor = Color(0xFF4B0618);
-  static const Color secondaryBackground = Color(0xFFFCF9FA);
-  static const Color errorFill = Color(0xFFFFFBE6);
-  static const Color errorBorder = Color(0xFFAD6800);
-  static const Color borderColor = Color(0xFFD3BBC2);
-  static const Color greenColorForText = Color(0xFF237804);
-  static const Color green135200 = Color(0xff135200);
-  static const Color warningColor = Color(0xff874D00);
-  static const Color onboardingDotInactive = Color(0xFFD3BBC2);
+  // ── Brand ─────────────────────────────────────────────────
+  static const Color primary      = Color(0xFF2395F8); // accent / CTA
+  static const Color primaryDark  = Color(0xFF1C77C6); // hover/pressed, gradient end
+  static const Color primaryGradientStart = Color(0xFF2AA7FF);
+  static const Color primaryGradientEnd   = Color(0xFF0957DE);
 
-  static const Color primary   = Color(0xFF5BA3D0);
-  static const Color secondary = Color(0xFFFFA726);
-  static const Color tertiary  = Color(0xFF6CBF56);
-  static const Color neutral   = Color(0xFF002768);
-
-  // ── Task type colors ──────────────────────────────────────
-  static const Color dailyTask   = primary;
-  static const Color bonusTask   = secondary;
-  static const Color flashTask   = tertiary;
-
-  // ── Scoreboard ────────────────────────────────────────────
-  static const Color cardBg         = Color(0xFF1E293B);
-  static const Color cardBorder     = Color(0xFF334155);
-  static const Color firstPlaceGlow = secondary;
-  static const Color scoreBoardBg   = neutral;
+  // ── Surfaces ──────────────────────────────────────────────
+  static const Color background   = Color(0xFFF8F8FF); // app scaffold bg
+  static const Color surface      = Colors.white;       // cards
+  static const Color surfaceElevated = Color(0xFFEBEBEB);
+  static const Color cardBorder   = Color(0xFFF0F0F0);
+  static const Color borderColor  = Color(0xFF3A3A3A);
 
   // ── Text ──────────────────────────────────────────────────
-  static const Color textPrimary   = Color(0xFFFFFFFF);
-  static const Color textSecondary = Color(0xFF94A3B8);
-  static const Color textDark      = neutral;
+  static const Color textPrimary   = Color(0xFF000000);
+  static const Color textMuted     = Color(0xFF8A8A8A);
+  static const Color textOnPrimary = Colors.white;
 
-  // ── UI ────────────────────────────────────────────────────
-  static const Color success = Color(0xFF22C55E);
-  static const Color error   = Color(0xFFEF4444);
-  static const Color warning = secondary;
-  static const Color divider = Color(0xFF1E293B);
-  static const Color surface = Color(0xFF1E293B);
-  static const Color background = neutral;
+  // ── Semantic (converted from Thaheen's toast tokens) ──────
+  static const Color success = Color(0xFF37A471); // hsl(152 50% 43%)
+  static const Color warning = Color(0xFFFFC65C); // hsl(39 100% 68%)
+  static const Color error   = Color(0xFFC13D2F); // hsl(6 61% 47%)
+  static const Color info    = Color(0xFF3182ED); // hsl(214 84% 56%)
+
+  // ── Lesson / progress status (LMS-specific) ───────────────
+  static const Color statusNotStarted = textMuted;
+  static const Color statusInProgress = warning;
+  static const Color statusCompleted  = success;
+  static const Color statusLocked     = Color(0xFFB0B0B0);
+
+  // ── Misc ──────────────────────────────────────────────────
+  static const Color divider = surfaceElevated;
+  static const Color black   = Colors.black;
+  static const Color white   = Colors.white;
+
+  // ── Compatibility aliases ─────────────────────────────────
+  static const Color textSecondary       = textMuted;
+  static const Color mainAppColor        = primary;
+  static const Color secondary           = warning;
+  static const Color red                 = error;
+  static const Color green               = success;
+  static const Color yellow              = warning;
+  static const Color purple              = info;
+  static const Color errorBorder         = error;
+  static const Color secondaryBackground = background;
 }

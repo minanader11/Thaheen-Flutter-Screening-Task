@@ -1,4 +1,3 @@
-import 'package:LJF_admin/core/widgets/app_drawer/app_drawer.dart';
 import 'package:flutter/material.dart';
 
 class BaseScaffold extends StatelessWidget {
@@ -11,7 +10,6 @@ class BaseScaffold extends StatelessWidget {
     required this.body,
     this.appBar,
     this.scaffoldKey,
-
     this.bottomNAvigationBar,
     super.key,
   });
@@ -21,9 +19,9 @@ class BaseScaffold extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: appBar,
-      drawer:  AppDrawer(scaffoldKey: scaffoldKey,),
+      //  drawer:  AppDrawer(scaffoldKey: scaffoldKey,),
       body: body,
-      bottomNavigationBar:bottomNAvigationBar ,
+      bottomNavigationBar: bottomNAvigationBar,
     );
   }
 }

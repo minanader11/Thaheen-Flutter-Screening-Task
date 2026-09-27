@@ -83,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "applySocialSecurityDescription": MessageLookupByLibrary.simpleMessage(
       "This service allows requesting a social security pension for the following categories: widow, divorced woman, needy family, disabled person, orphan, person unable to work, elderly, prisoner’s family, abandoned wife, and deceased’s family, as well as domestic helper allowance. Cabinet Decision No. (46) of 2014 specifies the pension amount for the categories listed in Law No. (38) of 1995 on Social Security and its granting rules.",
     ),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "associationsAndPrivateInstitutions": MessageLookupByLibrary.simpleMessage(
       "Associations and Private Institutions",
     ),
@@ -116,12 +117,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "citizenHousing": MessageLookupByLibrary.simpleMessage("Citizen Housing"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "close": MessageLookupByLibrary.simpleMessage("Close"),
     "commercialRegistrationNumber": MessageLookupByLibrary.simpleMessage(
       "Commercial Registration Number",
     ),
     "commitment": MessageLookupByLibrary.simpleMessage("Commitment"),
     "communityCare": MessageLookupByLibrary.simpleMessage("Community Care"),
     "completeData": MessageLookupByLibrary.simpleMessage("Complete Data"),
+    "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "completedRequests": MessageLookupByLibrary.simpleMessage(
       "Completed Requests",
     ),
@@ -133,10 +136,20 @@ class MessageLookup extends MessageLookupByLibrary {
       "Contact name...",
     ),
     "continueLater": MessageLookupByLibrary.simpleMessage("Continue Later"),
+    "continueWatching": MessageLookupByLibrary.simpleMessage(
+      "Continue Watching",
+    ),
     "continue_progress": MessageLookupByLibrary.simpleMessage("Continue"),
     "correspondenceAddresses": MessageLookupByLibrary.simpleMessage(
       "Correspondence Addresses",
     ),
+    "courseDetails": MessageLookupByLibrary.simpleMessage("Course Details"),
+    "courses": MessageLookupByLibrary.simpleMessage("Courses"),
+    "coursesLoading": MessageLookupByLibrary.simpleMessage(
+      "Loading courses...",
+    ),
+    "coursesTitle": MessageLookupByLibrary.simpleMessage("Courses"),
+    "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dataRegisteredSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Data registered successfully",
     ),
@@ -149,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "domesticWorkerAllowance": MessageLookupByLibrary.simpleMessage(
       "Domestic Worker Allowance",
     ),
+    "duration": MessageLookupByLibrary.simpleMessage("Duration"),
     "editData": MessageLookupByLibrary.simpleMessage("Edit Data"),
     "editEmergencyNumbers": MessageLookupByLibrary.simpleMessage(
       "Edit Emergency Numbers",
@@ -161,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emergencyNumbersInfo": MessageLookupByLibrary.simpleMessage(
       "Emergency numbers are saved in your phone wallet for quick access to relatives in case of emergency.",
     ),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "enjoyGovServices": MessageLookupByLibrary.simpleMessage(
       "Enjoy over 60 government services provided by the Ministry of Social Development and Family",
     ),
@@ -204,6 +219,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "entryExitRecord": MessageLookupByLibrary.simpleMessage(
       "Entry/Exit Record",
     ),
+    "errorLoadingCourse": MessageLookupByLibrary.simpleMessage(
+      "Error loading course details",
+    ),
+    "errorLoadingCourses": MessageLookupByLibrary.simpleMessage(
+      "Error loading courses",
+    ),
+    "errorLoadingLesson": MessageLookupByLibrary.simpleMessage(
+      "Error loading lesson",
+    ),
+    "exitFullscreen": MessageLookupByLibrary.simpleMessage("Exit Fullscreen"),
     "failedAction": m0,
     "faliarDes": MessageLookupByLibrary.simpleMessage(
       "Sorry, there seems to be a technical issue with our servers. Your request has been saved as a draft. Please try submitting later.",
@@ -219,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
       "Forgot your password?",
     ),
+    "fullscreen": MessageLookupByLibrary.simpleMessage("Fullscreen"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getService": MessageLookupByLibrary.simpleMessage("Get the service"),
     "governmentServicesDetails": MessageLookupByLibrary.simpleMessage(
@@ -233,9 +259,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "houseNumber": MessageLookupByLibrary.simpleMessage("House Number"),
     "idCard": MessageLookupByLibrary.simpleMessage("ID Card"),
     "idNumber": MessageLookupByLibrary.simpleMessage("ID Number"),
+    "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
     "inheritanceShare": MessageLookupByLibrary.simpleMessage(
       "Inheritance Share",
     ),
+    "instructor": MessageLookupByLibrary.simpleMessage("Instructor"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
     "latestNewsAndAnnouncements": MessageLookupByLibrary.simpleMessage(
@@ -244,6 +272,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "learnMoreAboutRequestStatus": MessageLookupByLibrary.simpleMessage(
       "Learn more about your request status",
     ),
+    "lessonLocked": MessageLookupByLibrary.simpleMessage(
+      "Please complete previous lessons first",
+    ),
+    "lessons": MessageLookupByLibrary.simpleMessage("Lessons"),
+    "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
+    "locked": MessageLookupByLibrary.simpleMessage("Locked"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginForServices": MessageLookupByLibrary.simpleMessage(
       "Log in to submit and track various government service requests",
@@ -279,17 +313,25 @@ class MessageLookup extends MessageLookupByLibrary {
       "News and Announcements",
     ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "nextLesson": MessageLookupByLibrary.simpleMessage("Next lesson"),
     "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
+    "noCourses": MessageLookupByLibrary.simpleMessage("No courses available"),
+    "noLessons": MessageLookupByLibrary.simpleMessage("No lessons available"),
+    "normalSpeed": MessageLookupByLibrary.simpleMessage("Normal"),
     "notAMemberYet": MessageLookupByLibrary.simpleMessage("Not a member yet?"),
     "notAdded": MessageLookupByLibrary.simpleMessage("Not Added"),
     "notEligible": MessageLookupByLibrary.simpleMessage("Not Eligible"),
+    "notStarted": MessageLookupByLibrary.simpleMessage("Not Started"),
     "ongoingRequests": MessageLookupByLibrary.simpleMessage("Ongoing Requests"),
     "optional": MessageLookupByLibrary.simpleMessage("Optional"),
     "optionalDocuments": MessageLookupByLibrary.simpleMessage(
       "Optional Documents Added",
     ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "pause": MessageLookupByLibrary.simpleMessage("Pause"),
     "personalInquiry": MessageLookupByLibrary.simpleMessage("Personal Inquiry"),
+    "play": MessageLookupByLibrary.simpleMessage("Play"),
+    "playbackSpeed": MessageLookupByLibrary.simpleMessage("Playback Speed"),
     "pleaseCompleteTheFollowingData": MessageLookupByLibrary.simpleMessage(
       "Please complete the following data",
     ),
@@ -335,9 +377,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectGender": MessageLookupByLibrary.simpleMessage(
       "Please select the gender",
     ),
+    "previousLesson": MessageLookupByLibrary.simpleMessage("Previous lesson"),
     "processingTime30Days": MessageLookupByLibrary.simpleMessage(
       "30 working days",
     ),
+    "progress": MessageLookupByLibrary.simpleMessage("Progress"),
     "realEstateRegistrationDocs": MessageLookupByLibrary.simpleMessage(
       "Real Estate Registration Documents",
     ),
@@ -349,6 +393,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "registerNow": MessageLookupByLibrary.simpleMessage("Register Now"),
     "rentalContract": MessageLookupByLibrary.simpleMessage("Rental Contract"),
+    "replay": MessageLookupByLibrary.simpleMessage("Replay"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
     "requestEnd": MessageLookupByLibrary.simpleMessage(
       "End of request (maximum 30 days)",
@@ -366,6 +411,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retirementSalary": MessageLookupByLibrary.simpleMessage(
       "Retirement Salary",
     ),
+    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "reviewBeforeSubmit": MessageLookupByLibrary.simpleMessage(
       "Please review the entered data carefully before submission. You will not be able to modify the request data or attachments after this step.",
     ),
@@ -380,6 +426,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchInYourRequests": MessageLookupByLibrary.simpleMessage(
       "Search in your requests",
     ),
+    "sections": MessageLookupByLibrary.simpleMessage("Sections"),
     "seeMore": MessageLookupByLibrary.simpleMessage("Show more..."),
     "selectGender": MessageLookupByLibrary.simpleMessage("Select gender"),
     "sendAgain": MessageLookupByLibrary.simpleMessage("send again"),
@@ -410,6 +457,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "servicesPageTitle": MessageLookupByLibrary.simpleMessage(
       "Available Services Page",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "showConditions": MessageLookupByLibrary.simpleMessage("Show Conditions"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "skipDataRegistrationNote": MessageLookupByLibrary.simpleMessage(
@@ -425,9 +473,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "socialSecuritySubscription": MessageLookupByLibrary.simpleMessage(
       "Social Security Subscription",
     ),
+    "speed": MessageLookupByLibrary.simpleMessage("Speed"),
     "sslCertificateIsInvalid": MessageLookupByLibrary.simpleMessage(
       "SSL certificate is invalid.",
     ),
+    "statusInProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("Submit Request"),
     "submitSocialSecurityRequest": MessageLookupByLibrary.simpleMessage(
@@ -437,14 +487,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "technicalErrorDraftSaved": MessageLookupByLibrary.simpleMessage(
       "Sorry. It seems there is a technical issue with our servers. Your request has been saved as a draft, please try submitting it again later.",
     ),
+    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "trackRequest": MessageLookupByLibrary.simpleMessage(
       "Track your request until it is completed",
     ),
     "unclearOrIncorrectDataFound": MessageLookupByLibrary.simpleMessage(
       "Some unclear or incorrect data was found in your request. Please review the following notes and resend the request to continue.",
     ),
+    "unlocked": MessageLookupByLibrary.simpleMessage("Unlocked"),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
     "verifyData": MessageLookupByLibrary.simpleMessage("Verify Data"),
+    "videoLoadError": MessageLookupByLibrary.simpleMessage(
+      "Error loading video",
+    ),
     "view": MessageLookupByLibrary.simpleMessage("View"),
     "viewAvailableServices": MessageLookupByLibrary.simpleMessage(
       "View Available Services",

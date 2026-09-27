@@ -1,116 +1,37 @@
-// import 'package:LJF_admin/core/get_it/dependecy_injection.dart';
-// import 'package:LJF_admin/features/available_service/view/screen/available_service_screen.dart';
-// import 'package:LJF_admin/features/citizen_information/view/screens/citizens_information_page.dart';
-// import 'package:LJF_admin/features/citizen_information/view/screens/complete_information_successfully_page.dart';
-// import 'package:LJF_admin/features/citizen_information/view/screens/welcoming_page.dart';
-// import 'package:LJF_admin/features/citizen_information/view_model/citizen_information_cubit.dart';
-// import 'package:LJF_admin/features/citizen_information/view_model/step_one_cubit/step_one_citizen_information_cubit.dart';
-// import 'package:LJF_admin/features/citizen_information/view_model/step_two_cubit/step_two_citizen_information_cubit.dart';
-// import 'package:LJF_admin/features/my_requests/view/screens/all_your_requests_page.dart';
-// import 'package:LJF_admin/features/my_requests/view/screens/complete_data_page.dart';
-// import 'package:LJF_admin/features/my_requests/view/screens/request_details_page.dart';
-// import 'package:LJF_admin/features/onboarding/view/screens/onboarding_page.dart';
-// import 'package:LJF_admin/features/onboarding/view_model/onboarding_cubit.dart';
-// import 'package:LJF_admin/features/service_details/view/screen/home.dart';
-// import 'package:LJF_admin/features/social_security/view/screen/social_security_screen.dart';
-// import 'package:LJF_admin/features/social_security/view/screen/edit_social_security_info.dart';
-// import 'package:LJF_admin/features/submit_service_request/view/screen/submit_service_request_screen.dart';
-// import 'package:flutter/material.dart';
-// import 'package:LJF_admin/core/routing/routes.dart';
-//
-// import 'package:flutter_bloc/flutter_bloc.dart';
-//
-// class AppRouter {
-//   static Route generateRoute(RouteSettings settings) {
-//     // final arguments = settings.arguments;
-//     switch (settings.name) {
-//       case Routes.onboarding:
-//         return MaterialPageRoute(
-//           builder: (_) => BlocProvider(
-//             create: (context) => getIt<OnboardingCubit>(),
-//             child: const OnboardingPage(),
-//           ),
-//         );
-//       case Routes.login:
-//         return MaterialPageRoute(
-//           builder: (_) => const LoginScreen(),
-//         );
-//
-//       case Routes.welcomingPage:
-//         return MaterialPageRoute(
-//           builder: (_) => const WelcomingPage(),
-//         );
-//
-//       case Routes.citizensInformation:
-//         return MaterialPageRoute(
-//           builder: (_) => MultiBlocProvider(
-//             providers: [
-//               BlocProvider(
-//                 create: (context) => getIt<CitizenInformationCubit>(),
-//               ),
-//               BlocProvider(
-//                 create: (context) => getIt<StepOneCitizenInformationCubit>(),
-//               ),
-//               BlocProvider(
-//                 create: (context) => getIt<StepTwoCitizenInformationCubit>(),
-//               ),
-//             ],
-//             child: const CitizensInformationPage(),
-//           ),
-//         );
-//
-//       case Routes.completeInformationSuccessfully:
-//         return MaterialPageRoute(
-//           builder: (_) => const CompleteInformationSuccessfullyPage(),
-//         );
-//
-//       case Routes.home:
-//         return MaterialPageRoute(
-//           settings: const RouteSettings(name: Routes.home),
-//           builder: (_) => HomeScreen(),
-//         );
-//       case Routes.serviceDetails:
-//         return MaterialPageRoute(
-//           builder: (_) => const ServiceDetailsScreen(),
-//         );
-//       // Add more routes here as needed
-//       case Routes.submitServiceRequest:
-//         return MaterialPageRoute(
-//           builder: (_) => SubmitServiceRequestScreen(),
-//         );
-//       case Routes.socialSecurityScreen:
-//         return MaterialPageRoute(
-//           builder: (_) => const SocialSecurityScreen(),
-//         );
-//
-//       case Routes.editSocialSecurityScreen:
-//         return MaterialPageRoute(
-//           builder: (_) => EditSocialSecurityInfo(),
-//         );
-//       case Routes.allYourRequests:
-//         return MaterialPageRoute(
-//           builder: (_) => AllYourRequestsPage(),
-//         );
-//
-//       case Routes.requestDetails:
-//         return MaterialPageRoute(
-//           builder: (_) => const RequestDetailsPage(),
-//         );
-//
-//       case Routes.completeData:
-//         return MaterialPageRoute(
-//           builder: (_) => const CompleteDataPage(),
-//         );
-//       case Routes.availableService:
-//         return MaterialPageRoute(
-//           builder: (_) => const AvailableServiceScreen(),
-//         );
-//       default:
-//         return MaterialPageRoute(
-//           builder: (_) => Scaffold(
-//             body: Center(child: Text('No route defined for ${settings.name}')),
-//           ),
-//         );
-//     }
-//   }
-// }
+import 'package:flutter/material.dart';
+import '../../features/splash/view/screen/splash_screen.dart';
+import '../../features/courses/view/screen/courses_screen.dart';
+import '../../features/course_details/view/screen/course_details_screen.dart';
+import '../../features/lesson_player/view/screen/lesson_player_screen.dart';
+import 'lesson_player_args.dart';
+import 'routes.dart';
+
+class AppRouter {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.splash:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
+
+      case Routes.courses:
+        return MaterialPageRoute(builder: (_) => const CoursesScreen());
+
+      case Routes.courseDetails:
+        final courseId = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => CourseDetailsScreen(courseId: courseId),
+        );
+
+      case Routes.lessonPlayer:
+        final args = settings.arguments as LessonPlayerArgs;
+        return MaterialPageRoute(
+          builder: (_) => LessonPlayerScreen(
+            courseId: args.courseId,
+            lessonId: args.lessonId,
+          ),
+        );
+
+      default:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
+    }
+  }
+}

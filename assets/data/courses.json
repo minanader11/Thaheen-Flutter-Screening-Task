@@ -1,0 +1,80 @@
+{
+  "courses": [
+    {
+      "id": "anatomy-101",
+      "title": "مقدمة في التشريح",
+      "instructor": "د. سارة",
+      "thumbnail": "assets/images/anatomy.jpg",
+      "sections": [
+        {
+          "id": "s1",
+          "title": "الجهاز الهيكلي",
+          "lessons": [
+            {
+              "id": "l1",
+              "title": "العظام",
+              "durationSec": 148,
+              "video": "assets/videos/lesson1.mp4"
+            },
+            {
+              "id": "l2",
+              "title": "المفاصل",
+              "durationSec": 141,
+              "video": "assets/videos/lesson2.mp4"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "title": "الجهاز العضلي",
+          "lessons": [
+            {
+              "id": "l3",
+              "title": "أنواع العضلات",
+              "durationSec": 72,
+              "video": "assets/videos/lesson3.mp4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physiology-101",
+      "title": "أساسيات علم وظائف الأعضاء",
+      "instructor": "د. أحمد",
+      "thumbnail": "assets/images/physiology.jpg",
+      "sections": [
+        {
+          "id": "s1",
+          "title": "الجهاز الدوري",
+          "lessons": [
+            {
+              "id": "l1",
+              "title": "القلب",
+              "durationSec": 148,
+              "video": "assets/videos/lesson1.mp4"
+            },
+            {
+              "id": "l2",
+              "title": "الأوعية الدموية",
+              "durationSec": 141,
+              "video": "assets/videos/lesson2.mp4"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "title": "الجهاز التنفسي",
+          "lessons": [
+            {
+              "id": "l3",
+              "title": "الرئتان",
+              "durationSec": 72,
+              "video": "assets/videos/lesson3.mp4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
