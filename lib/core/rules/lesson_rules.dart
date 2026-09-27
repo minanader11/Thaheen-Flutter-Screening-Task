@@ -1,4 +1,4 @@
-import '../features/courses/model/lesson_model.dart';
+import '../../features/courses/model/lesson_model.dart';
 
 /// Returns true if the lesson playback position is at or above 90% of duration.
 /// Returns false if durationSec is 0 or negative, or position is below 90%.

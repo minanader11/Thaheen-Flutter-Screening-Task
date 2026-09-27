@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import '../../../core/constants/asset_paths.dart';
-import '../../../core/lesson_rules.dart';
+import '../../../core/rules/lesson_rules.dart';
 import '../../../core/network/api_result.dart';
 import '../../../core/services/progress_local_service.dart';
 import '../model/course_model.dart';

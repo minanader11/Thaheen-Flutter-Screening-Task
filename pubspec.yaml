@@ -39,10 +39,7 @@ dependencies:
   #localization
   intl: ^0.20.2
   flutter_localization: ^0.3.3
-  # for picking images from gallery or camera
-  image_picker: ^1.2.0
-  # for picking files from device
-  file_picker: ^10.3.3
+
 
 
   cupertino_icons: ^1.0.8
@@ -50,7 +47,7 @@ dependencies:
   bloc_test: ^10.0.0
   connectivity_plus: ^7.0.0
 #  rxdart: ^0.28.0
-  smooth_page_indicator: ^1.2.1
+
   injectable: ^2.5.1
 
 

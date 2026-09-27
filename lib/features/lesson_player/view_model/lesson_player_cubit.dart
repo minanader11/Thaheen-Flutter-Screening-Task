@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:video_player/video_player.dart';
-import '../../../core/lesson_rules.dart';
+import '../../../core/rules/lesson_rules.dart';
 import '../../../core/network/get_state.dart';
 import '../../../core/services/progress_local_service.dart';
 import '../../../core/settings/view_model/settings_cubit.dart';

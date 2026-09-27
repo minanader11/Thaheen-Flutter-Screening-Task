@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/lesson_rules.dart';
+import '../../../../core/rules/lesson_rules.dart';
 import '../../../../core/localization/generated/l10n.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/styles.dart';

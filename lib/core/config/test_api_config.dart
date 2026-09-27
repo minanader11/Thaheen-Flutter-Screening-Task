@@ -5,7 +5,7 @@ import 'api_config.dart';
 @LazySingleton(as: ApiConfiguration, env: [Environment.test])
 class TestApiConfiguration extends ApiConfiguration {
   @override
-  String get baseUrl => "https://ljfscoring.runasp.net/api/";
+  String get baseUrl => "https:baseurl.com";
 
   // Uncomment and implement the below lines if Microsoft authentication is needed
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:Thaheen/core/lesson_rules.dart';
+import 'package:Thaheen/core/rules/lesson_rules.dart';
 import 'package:Thaheen/features/courses/model/course_model.dart';
 import 'package:Thaheen/features/courses/model/lesson_model.dart';
 import 'package:Thaheen/features/courses/model/lesson_progress_model.dart';
