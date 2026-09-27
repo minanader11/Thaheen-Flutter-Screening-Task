@@ -29,8 +29,27 @@ class CoursesScreen extends StatelessWidget {
   }
 }
 
-class CoursesView extends StatelessWidget {
+class CoursesView extends StatefulWidget {
   const CoursesView({super.key});
+
+  @override
+  State<CoursesView> createState() => _CoursesViewState();
+}
+
+class _CoursesViewState extends State<CoursesView> {
+  late final TextEditingController _searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,12 +156,7 @@ class CoursesView extends StatelessWidget {
               );
 
             case GetState.success:
-              if (state.courses.isEmpty) {
-                return Center(
-                  child: NoDataWidget(title: s.courses),
-                );
-              }
-
+              final filteredCourses = state.filteredCourses;
               final continueWatchingCourse = state.continueWatchingCourse;
               final continueWatchingLesson = state.continueWatchingLesson;
               final hasContinueWatching =
@@ -151,25 +165,99 @@ class CoursesView extends StatelessWidget {
               return RefreshIndicator(
                 color: ColorManager.primary,
                 onRefresh: () => context.read<CoursesCubit>().getCourses(),
-                child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  itemCount: state.courses.length +
-                      (hasContinueWatching ? 1 : 0),
-                  itemBuilder: (context, index) {
-                    if (hasContinueWatching) {
-                      if (index == 0) {
-                        return ContinueWatchingCard(
-                          course: continueWatchingCourse,
-                          lesson: continueWatchingLesson,
-                        );
-                      }
-                      final course = state.courses[index - 1];
-                      return CourseListItem(course: course);
-                    }
+                child: Column(
+                  children: [
+                    // ── Search Bar ──────────────────────────────────────────
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: ColorManager.cardBorder,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.03),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: TextField(
+                          controller: _searchController,
+                          onChanged: (query) {
+                            context.read<CoursesCubit>().searchCourses(query);
+                          },
+                          style: TextStyles.bodyMedium.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                          decoration: InputDecoration(
+                            hintText: s.searchCourses,
+                            hintStyle: TextStyles.bodyMedium.copyWith(
+                              color: ColorManager.textMuted,
+                            ),
+                            prefixIcon: const Icon(
+                              Icons.search_rounded,
+                              color: ColorManager.primary,
+                              size: 22,
+                            ),
+                            suffixIcon: state.searchQuery.isNotEmpty
+                                ? IconButton(
+                                    icon: const Icon(
+                                      Icons.close_rounded,
+                                      color: ColorManager.textMuted,
+                                      size: 18,
+                                    ),
+                                    onPressed: () {
+                                      _searchController.clear();
+                                      context.read<CoursesCubit>().clearSearch();
+                                    },
+                                  )
+                                : null,
+                            border: InputBorder.none,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
 
-                    final course = state.courses[index];
-                    return CourseListItem(course: course);
-                  },
+                    // ── Courses List or Empty Search Results ────────────────
+                    Expanded(
+                      child: filteredCourses.isEmpty
+                          ? Center(
+                              child: NoDataWidget(
+                                title: state.searchQuery.isNotEmpty
+                                    ? s.noCoursesFound
+                                    : s.courses,
+                              ),
+                            )
+                          : ListView.builder(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              itemCount: filteredCourses.length +
+                                  (hasContinueWatching ? 1 : 0),
+                              itemBuilder: (context, index) {
+                                if (hasContinueWatching) {
+                                  if (index == 0) {
+                                    return ContinueWatchingCard(
+                                      course: continueWatchingCourse,
+                                      lesson: continueWatchingLesson,
+                                    );
+                                  }
+                                  final course = filteredCourses[index - 1];
+                                  return CourseListItem(course: course);
+                                }
+
+                                final course = filteredCourses[index];
+                                return CourseListItem(course: course);
+                              },
+                            ),
+                    ),
+                  ],
                 ),
               );
           }

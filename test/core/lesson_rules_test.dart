@@ -29,44 +29,44 @@ void main() {
   });
 
   group('2. isLessonUnlocked', () {
-    final lesson1NotStarted = LessonModel(
+    const lesson1NotStarted = LessonModel(
       id: 'l1',
       title: 'Lesson 1',
       durationSec: 100,
       video: 'v1.mp4',
-      progress: const LessonProgressModel(status: 'notStarted', positionSec: 0),
+      progress: LessonProgressModel(status: 'notStarted', positionSec: 0),
     );
 
-    final lesson1Completed = LessonModel(
+    const lesson1Completed = LessonModel(
       id: 'l1',
       title: 'Lesson 1',
       durationSec: 100,
       video: 'v1.mp4',
-      progress: const LessonProgressModel(status: 'completed', positionSec: 100),
+      progress: LessonProgressModel(status: 'completed', positionSec: 100),
     );
 
-    final lesson2NotStarted = LessonModel(
+    const lesson2NotStarted = LessonModel(
       id: 'l2',
       title: 'Lesson 2',
       durationSec: 100,
       video: 'v2.mp4',
-      progress: const LessonProgressModel(status: 'notStarted', positionSec: 0),
+      progress: LessonProgressModel(status: 'notStarted', positionSec: 0),
     );
 
-    final lesson2Completed = LessonModel(
+    const lesson2Completed = LessonModel(
       id: 'l2',
       title: 'Lesson 2',
       durationSec: 100,
       video: 'v2.mp4',
-      progress: const LessonProgressModel(status: 'completed', positionSec: 100),
+      progress: LessonProgressModel(status: 'completed', positionSec: 100),
     );
 
-    final lesson3NotStarted = LessonModel(
+    const lesson3NotStarted = LessonModel(
       id: 'l3',
       title: 'Lesson 3',
       durationSec: 100,
       video: 'v3.mp4',
-      progress: const LessonProgressModel(status: 'notStarted', positionSec: 0),
+      progress: LessonProgressModel(status: 'notStarted', positionSec: 0),
     );
 
     test('index 0 is always true regardless of progress', () {

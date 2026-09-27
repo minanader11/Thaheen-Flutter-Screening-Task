@@ -38,6 +38,7 @@ import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_ha
     as _i768;
 import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_hanlder.dart'
     as _i886;
+import 'package:LJF_admin/core/services/lesson_notes_service.dart' as _i772;
 import 'package:LJF_admin/core/services/progress_local_service.dart' as _i353;
 import 'package:LJF_admin/core/settings/repo/settings_repo.dart' as _i650;
 import 'package:LJF_admin/core/settings/repo/settings_repo_impl.dart' as _i657;
@@ -50,8 +51,6 @@ import 'package:LJF_admin/features/courses/repo/courses_repo_impl.dart'
     as _i978;
 import 'package:LJF_admin/features/courses/view_model/courses_cubit.dart'
     as _i63;
-import 'package:LJF_admin/features/job_order/view_model/job_order_cubit.dart'
-    as _i799;
 import 'package:LJF_admin/features/lesson_player/view_model/lesson_player_cubit.dart'
     as _i833;
 
@@ -71,12 +70,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final navigationModule = _$NavigationModule();
     final registerModule = _$RegisterModule();
-    gh.factory<_i799.JobOrderCubit>(() => _i799.JobOrderCubit());
     gh.lazySingleton<_i1054.CacheHelper>(() => _i1054.CacheHelper());
     gh.lazySingleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => navigationModule.navigatorKey);
     gh.lazySingleton<_i215.CacheHelper>(() => _i215.CacheHelper());
     gh.lazySingleton<_i43.LocalizationCubit>(() => _i43.LocalizationCubit());
+    gh.lazySingleton<_i772.LessonNotesService>(
+        () => _i772.LessonNotesService());
     gh.lazySingleton<_i353.ProgressLocalService>(
         () => _i353.ProgressLocalService());
     gh.lazySingleton<_i725.ErrorParser>(() => _i610.DioErrorParser());

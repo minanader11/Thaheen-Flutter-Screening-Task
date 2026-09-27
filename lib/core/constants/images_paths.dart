@@ -22,5 +22,5 @@ class ImagesPaths {
   static const String successImage = '${imageBase}successImage.svg';
   static const String failureImage = '${imageBase}failureImage.svg';
   static const String socialSecurityImage = '${imageBase}social_security_image.svg';
-  static const String LJFLogo = '${imageBase}LJF_logo.png';
+  static const String ljfLogo = '${imageBase}LJF_logo.png';
 }

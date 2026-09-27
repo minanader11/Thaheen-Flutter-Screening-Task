@@ -192,5 +192,45 @@ void main() {
 
       expect(course.continueWatchingLesson?.id, 'l2');
     });
+
+    test('searchCourses filters courses by title and instructor case-insensitively', () async {
+      const course1 = CourseModel(
+        id: 'anatomy-101',
+        title: 'مقدمة في التشريح',
+        instructor: 'د. سارة',
+        thumbnail: 'thumb.png',
+        sections: [],
+      );
+      const course2 = CourseModel(
+        id: 'physio-101',
+        title: 'علم وظائف الأعضاء',
+        instructor: 'د. أحمد',
+        thumbnail: 'thumb2.png',
+        sections: [],
+      );
+
+      fakeRepo.mockResult = const ApiResult.success([course1, course2]);
+      await cubit.getCourses();
+
+      expect(cubit.state.filteredCourses.length, 2);
+
+      // Search by title match
+      cubit.searchCourses('التشريح');
+      expect(cubit.state.filteredCourses.length, 1);
+      expect(cubit.state.filteredCourses.first.id, 'anatomy-101');
+
+      // Search by instructor match
+      cubit.searchCourses('أحمد');
+      expect(cubit.state.filteredCourses.length, 1);
+      expect(cubit.state.filteredCourses.first.id, 'physio-101');
+
+      // Search with non-matching query
+      cubit.searchCourses('كيمياء');
+      expect(cubit.state.filteredCourses.isEmpty, isTrue);
+
+      // Clear search restores all courses
+      cubit.clearSearch();
+      expect(cubit.state.filteredCourses.length, 2);
+    });
   });
 }

@@ -230,13 +230,13 @@ void main() {
         ],
       );
 
-      final stateWithMatch = const LessonPlayerState(
+      const stateWithMatch = LessonPlayerState(
         course: course,
         currentLessonId: 'l1',
       );
       expect(stateWithMatch.currentLesson?.id, 'l1');
 
-      final stateWithMiss = const LessonPlayerState(
+      const stateWithMiss = LessonPlayerState(
         course: course,
         currentLessonId: 'non-existent',
       );

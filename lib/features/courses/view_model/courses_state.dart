@@ -10,12 +10,15 @@ class CoursesState extends Equatable {
   final String? lastWatchedCourseId;
   final String? lastWatchedLessonId;
 
+  final String searchQuery;
+
   const CoursesState({
     this.coursesState = GetState.initial,
     this.courses = const [],
     this.errorMessage = '',
     this.lastWatchedCourseId,
     this.lastWatchedLessonId,
+    this.searchQuery = '',
   });
 
   CoursesState copyWith({
@@ -24,6 +27,7 @@ class CoursesState extends Equatable {
     String? errorMessage,
     String? lastWatchedCourseId,
     String? lastWatchedLessonId,
+    String? searchQuery,
   }) {
     return CoursesState(
       coursesState: coursesState ?? this.coursesState,
@@ -31,10 +35,24 @@ class CoursesState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       lastWatchedCourseId: lastWatchedCourseId ?? this.lastWatchedCourseId,
       lastWatchedLessonId: lastWatchedLessonId ?? this.lastWatchedLessonId,
+      searchQuery: searchQuery ?? this.searchQuery,
     );
   }
 
+  List<CourseModel> get filteredCourses {
+    if (searchQuery.trim().isEmpty) return courses;
+    final q = searchQuery.trim().toLowerCase();
+    return courses.where((c) {
+      final titleMatch = c.title.toLowerCase().contains(q);
+      final instructorMatch = c.instructor.toLowerCase().contains(q);
+      return titleMatch || instructorMatch;
+    }).toList();
+  }
+
   CourseModel? get continueWatchingCourse {
+    // When actively searching, hide continue watching card to keep search focused
+    if (searchQuery.trim().isNotEmpty) return null;
+
     // 1. If explicit lastWatched is recorded, find that course and verify it has the lesson
     if (lastWatchedCourseId != null && lastWatchedLessonId != null) {
       final matchedCourse = courses.cast<CourseModel?>().firstWhere(
@@ -91,5 +109,6 @@ class CoursesState extends Equatable {
         errorMessage,
         lastWatchedCourseId,
         lastWatchedLessonId,
+        searchQuery,
       ];
 }

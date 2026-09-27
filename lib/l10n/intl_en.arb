@@ -247,5 +247,16 @@
   "theme": "Theme",
   "lightMode": "Light Mode",
   "darkMode": "Dark Mode",
-  "close": "Close"
+  "close": "Close",
+  "searchCourses": "Search courses or instructors...",
+  "noCoursesFound": "No courses found",
+  "clearSearch": "Clear search",
+  "lessonNotes": "Lesson Notes",
+  "notes": "Notes",
+  "addNote": "Write your thoughts or notes here...",
+  "saveNote": "Save Note",
+  "noteSaved": "Note saved successfully",
+  "deleteNote": "Delete Note",
+  "noteDeleted": "Note deleted",
+  "noNotesYet": "No notes yet for this lesson"
 }

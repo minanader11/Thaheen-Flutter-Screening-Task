@@ -28,4 +28,12 @@ class CoursesCubit extends Cubit<CoursesState> {
       ));
     }
   }
+
+  void searchCourses(String query) {
+    emit(state.copyWith(searchQuery: query));
+  }
+
+  void clearSearch() {
+    emit(state.copyWith(searchQuery: ''));
+  }
 }

@@ -49,6 +49,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "حدث خطأ غير متوقع.",
     ),
     "acceptOrReject": MessageLookupByLibrary.simpleMessage("القبول أو الرفض"),
+    "addNote": MessageLookupByLibrary.simpleMessage(
+      "اكتب ملاحظاتك وأفكارك هنا...",
+    ),
     "added": MessageLookupByLibrary.simpleMessage("تم الإدراج"),
     "additionalData": MessageLookupByLibrary.simpleMessage("بيانات اضافية"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
@@ -115,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "citizenHousing": MessageLookupByLibrary.simpleMessage("إسكان المواطنين"),
     "city": MessageLookupByLibrary.simpleMessage("مدينة"),
+    "clearSearch": MessageLookupByLibrary.simpleMessage("مسح البحث"),
     "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "commercialRegistrationNumber": MessageLookupByLibrary.simpleMessage(
       "رقم السجل التجاري",
@@ -153,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "declaration": MessageLookupByLibrary.simpleMessage(
       "أتعهد بأن البيانات المدخلة صحيحة وأن المستندات المدرجة أصلية ومستخرجة من مصادرها الصحيحة.",
     ),
+    "deleteNote": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
     "domesticWorkerAllowance": MessageLookupByLibrary.simpleMessage("بدل خادم"),
     "duration": MessageLookupByLibrary.simpleMessage("المدة"),
     "editData": MessageLookupByLibrary.simpleMessage("تعديل البيانات"),
@@ -259,6 +264,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lessonLocked": MessageLookupByLibrary.simpleMessage(
       "يرجى إكمال الدروس السابقة أولاً",
     ),
+    "lessonNotes": MessageLookupByLibrary.simpleMessage("ملاحظات الدرس"),
     "lessons": MessageLookupByLibrary.simpleMessage("دروس"),
     "lightMode": MessageLookupByLibrary.simpleMessage("الوضع النهاري"),
     "locked": MessageLookupByLibrary.simpleMessage("مقفل"),
@@ -300,7 +306,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "nextLesson": MessageLookupByLibrary.simpleMessage("الدرس التالي"),
     "nextStep": MessageLookupByLibrary.simpleMessage("الخطوة التالية"),
     "noCourses": MessageLookupByLibrary.simpleMessage("لا توجد دورات متاحة"),
+    "noCoursesFound": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على دورات مطابقة",
+    ),
     "noLessons": MessageLookupByLibrary.simpleMessage("لا توجد دروس متاحة"),
+    "noNotesYet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد ملاحظات مسجلة لهذا الدرس بعد",
+    ),
     "normalSpeed": MessageLookupByLibrary.simpleMessage("عادي"),
     "notAMemberYet": MessageLookupByLibrary.simpleMessage(
       "لست عضواً حتى الان ؟",
@@ -308,6 +320,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "notAdded": MessageLookupByLibrary.simpleMessage("لم يتم الإدراج"),
     "notEligible": MessageLookupByLibrary.simpleMessage("غير مستوفى للشروط"),
     "notStarted": MessageLookupByLibrary.simpleMessage("لم يبدأ"),
+    "noteDeleted": MessageLookupByLibrary.simpleMessage("تم حذف الملاحظة"),
+    "noteSaved": MessageLookupByLibrary.simpleMessage("تم حفظ الملاحظة بنجاح"),
+    "notes": MessageLookupByLibrary.simpleMessage("الملاحظات"),
     "ongoingRequests": MessageLookupByLibrary.simpleMessage("الطلبات الجارية"),
     "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
     "optionalDocuments": MessageLookupByLibrary.simpleMessage(
@@ -402,6 +417,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "salaryTotal": MessageLookupByLibrary.simpleMessage("الراتب الإجمالي"),
     "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+    "saveNote": MessageLookupByLibrary.simpleMessage("حفظ الملاحظة"),
+    "searchCourses": MessageLookupByLibrary.simpleMessage(
+      "البحث في الدورات أو المحاضرين...",
+    ),
     "searchForService": MessageLookupByLibrary.simpleMessage("ابحث عن خدمة"),
     "searchInYourRequests": MessageLookupByLibrary.simpleMessage(
       "ابحث فى طلباتك",

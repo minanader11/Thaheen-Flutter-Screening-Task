@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/localization/generated/l10n.dart';
-import '../../../../core/localization/lms_localization_extension.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/styles.dart';
 import '../../../../core/widgets/other/custom_text.dart';

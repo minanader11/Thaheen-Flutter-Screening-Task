@@ -7,6 +7,7 @@ import '../../../../core/widgets/buttons/elevated_button.dart';
 import '../../../../core/widgets/other/custom_text.dart';
 import '../../view_model/lesson_player_cubit.dart';
 import '../../view_model/lesson_player_state.dart';
+import 'lesson_notes_sheet.dart';
 import 'speed_selector_sheet.dart';
 
 class PlayerControls extends StatefulWidget {
@@ -251,6 +252,43 @@ class _PlayerControlsState extends State<PlayerControls> {
                               ),
                             ),
                           ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 8.w),
+
+                  // Per-lesson Notes button
+                  Material(
+                    color: Colors.white.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(8.r),
+                      onTap: () {
+                        final lesson = state.currentLesson;
+                        if (lesson != null && state.course != null) {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (_) => LessonNotesSheet(
+                              courseId: state.course!.id,
+                              lessonId: lesson.id,
+                              lessonTitle: lesson.title,
+                            ),
+                          );
+                        }
+                      },
+                      child: Tooltip(
+                        message: s.lessonNotes,
+                        child: Padding(
+                          padding: EdgeInsets.all(7.r),
+                          child: Icon(
+                            Icons.note_alt_outlined,
+                            color: Colors.white,
+                            size: 18.r,
+                          ),
                         ),
                       ),
                     ),

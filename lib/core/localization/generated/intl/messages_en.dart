@@ -51,6 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "acceptOrReject": MessageLookupByLibrary.simpleMessage(
       "Acceptance or Rejection",
     ),
+    "addNote": MessageLookupByLibrary.simpleMessage(
+      "Write your thoughts or notes here...",
+    ),
     "added": MessageLookupByLibrary.simpleMessage("Added"),
     "additionalData": MessageLookupByLibrary.simpleMessage("Additional Data"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
@@ -117,6 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "citizenHousing": MessageLookupByLibrary.simpleMessage("Citizen Housing"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "clearSearch": MessageLookupByLibrary.simpleMessage("Clear search"),
     "close": MessageLookupByLibrary.simpleMessage("Close"),
     "commercialRegistrationNumber": MessageLookupByLibrary.simpleMessage(
       "Commercial Registration Number",
@@ -159,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "declaration": MessageLookupByLibrary.simpleMessage(
       "I declare that the entered data is correct and that the attached documents are original and obtained from their authentic sources.",
     ),
+    "deleteNote": MessageLookupByLibrary.simpleMessage("Delete Note"),
     "domesticWorkerAllowance": MessageLookupByLibrary.simpleMessage(
       "Domestic Worker Allowance",
     ),
@@ -275,6 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lessonLocked": MessageLookupByLibrary.simpleMessage(
       "Please complete previous lessons first",
     ),
+    "lessonNotes": MessageLookupByLibrary.simpleMessage("Lesson Notes"),
     "lessons": MessageLookupByLibrary.simpleMessage("Lessons"),
     "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
     "locked": MessageLookupByLibrary.simpleMessage("Locked"),
@@ -316,12 +322,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "nextLesson": MessageLookupByLibrary.simpleMessage("Next lesson"),
     "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
     "noCourses": MessageLookupByLibrary.simpleMessage("No courses available"),
+    "noCoursesFound": MessageLookupByLibrary.simpleMessage("No courses found"),
     "noLessons": MessageLookupByLibrary.simpleMessage("No lessons available"),
+    "noNotesYet": MessageLookupByLibrary.simpleMessage(
+      "No notes yet for this lesson",
+    ),
     "normalSpeed": MessageLookupByLibrary.simpleMessage("Normal"),
     "notAMemberYet": MessageLookupByLibrary.simpleMessage("Not a member yet?"),
     "notAdded": MessageLookupByLibrary.simpleMessage("Not Added"),
     "notEligible": MessageLookupByLibrary.simpleMessage("Not Eligible"),
     "notStarted": MessageLookupByLibrary.simpleMessage("Not Started"),
+    "noteDeleted": MessageLookupByLibrary.simpleMessage("Note deleted"),
+    "noteSaved": MessageLookupByLibrary.simpleMessage(
+      "Note saved successfully",
+    ),
+    "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "ongoingRequests": MessageLookupByLibrary.simpleMessage("Ongoing Requests"),
     "optional": MessageLookupByLibrary.simpleMessage("Optional"),
     "optionalDocuments": MessageLookupByLibrary.simpleMessage(
@@ -420,6 +435,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "salaryTotal": MessageLookupByLibrary.simpleMessage("Total Salary"),
     "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
+    "saveNote": MessageLookupByLibrary.simpleMessage("Save Note"),
+    "searchCourses": MessageLookupByLibrary.simpleMessage(
+      "Search courses or instructors...",
+    ),
     "searchForService": MessageLookupByLibrary.simpleMessage(
       "Search for a service",
     ),

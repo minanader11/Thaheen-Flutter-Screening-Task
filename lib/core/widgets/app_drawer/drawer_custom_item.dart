@@ -39,7 +39,7 @@ this.onTapDrawerItem});
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400),
             )),
-            ImageHelper(
+            const ImageHelper(
               image: IconsPath.leftArrowImage,
               imageType: ImageType.svg,
               color: Colors.white,

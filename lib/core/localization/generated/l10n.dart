@@ -28,9 +28,10 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -2187,6 +2188,101 @@ class S {
   /// `Close`
   String get close {
     return Intl.message('Close', name: 'close', desc: '', args: []);
+  }
+
+  /// `Search courses or instructors...`
+  String get searchCourses {
+    return Intl.message(
+      'Search courses or instructors...',
+      name: 'searchCourses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No courses found`
+  String get noCoursesFound {
+    return Intl.message(
+      'No courses found',
+      name: 'noCoursesFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear search`
+  String get clearSearch {
+    return Intl.message(
+      'Clear search',
+      name: 'clearSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lesson Notes`
+  String get lessonNotes {
+    return Intl.message(
+      'Lesson Notes',
+      name: 'lessonNotes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get notes {
+    return Intl.message('Notes', name: 'notes', desc: '', args: []);
+  }
+
+  /// `Write your thoughts or notes here...`
+  String get addNote {
+    return Intl.message(
+      'Write your thoughts or notes here...',
+      name: 'addNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Note`
+  String get saveNote {
+    return Intl.message('Save Note', name: 'saveNote', desc: '', args: []);
+  }
+
+  /// `Note saved successfully`
+  String get noteSaved {
+    return Intl.message(
+      'Note saved successfully',
+      name: 'noteSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Note`
+  String get deleteNote {
+    return Intl.message('Delete Note', name: 'deleteNote', desc: '', args: []);
+  }
+
+  /// `Note deleted`
+  String get noteDeleted {
+    return Intl.message(
+      'Note deleted',
+      name: 'noteDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notes yet for this lesson`
+  String get noNotesYet {
+    return Intl.message(
+      'No notes yet for this lesson',
+      name: 'noNotesYet',
+      desc: '',
+      args: [],
+    );
   }
 }
 

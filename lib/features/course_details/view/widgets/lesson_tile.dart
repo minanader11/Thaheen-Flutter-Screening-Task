@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/lesson_rules.dart';
 import '../../../../core/localization/generated/l10n.dart';
-import '../../../../core/localization/lms_localization_extension.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/styles.dart';
 import '../../../../core/widgets/other/custom_text.dart';
@@ -11,6 +10,7 @@ import '../../../../core/routing/routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../view_model/course_details_cubit.dart';
 import '../../../courses/model/lesson_model.dart';
+import '../../../lesson_player/view/widgets/lesson_notes_sheet.dart';
 
 class LessonTile extends StatelessWidget {
   final String courseId;
@@ -193,7 +193,7 @@ class LessonTile extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
+                       Icon(
                         Icons.access_time_rounded,
                         size: 13.r,
                         color: ColorManager.textMuted,
@@ -208,6 +208,31 @@ class LessonTile extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (isUnlocked) ...[
+                  SizedBox(width: 6.w),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: BoxConstraints.tight(Size(28.r, 28.r)),
+                    icon: Icon(
+                      Icons.note_alt_outlined,
+                      size: 16.r,
+                      color: ColorManager.primary,
+                    ),
+                    tooltip: s.lessonNotes,
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (_) => LessonNotesSheet(
+                          courseId: courseId,
+                          lessonId: lesson.id,
+                          lessonTitle: lesson.title,
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ],
             ),
           ),

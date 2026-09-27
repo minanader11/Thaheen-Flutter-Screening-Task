@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:LJF_admin/core/cache/cache_helper.dart';
 import 'package:LJF_admin/core/cache/cache_keys.dart';
+import 'package:LJF_admin/core/services/lesson_notes_service.dart';
 import 'package:LJF_admin/core/services/progress_local_service.dart';
 import 'package:LJF_admin/features/courses/model/lesson_progress_model.dart';
 
@@ -125,6 +126,51 @@ void main() {
 
       await service.clearLastWatched();
       expect(service.getLastWatched(), isNull);
+    });
+  });
+
+  group('LessonNotesService', () {
+    test('saveNote and getNote persist and retrieve lesson note offline', () async {
+      final service = LessonNotesService();
+      await service.saveNote(
+        courseId: 'anatomy-101',
+        lessonId: 'l1',
+        note: 'Important note about bone structure',
+      );
+
+      final note = service.getNote(courseId: 'anatomy-101', lessonId: 'l1');
+      expect(note, 'Important note about bone structure');
+    });
+
+    test('deleteNote removes saved note', () async {
+      final service = LessonNotesService();
+      await service.saveNote(
+        courseId: 'anatomy-101',
+        lessonId: 'l2',
+        note: 'Joint classification notes',
+      );
+
+      expect(service.getNote(courseId: 'anatomy-101', lessonId: 'l2'), isNotNull);
+
+      await service.deleteNote(courseId: 'anatomy-101', lessonId: 'l2');
+      expect(service.getNote(courseId: 'anatomy-101', lessonId: 'l2'), isNull);
+    });
+
+    test('saving empty note removes note entry', () async {
+      final service = LessonNotesService();
+      await service.saveNote(
+        courseId: 'anatomy-101',
+        lessonId: 'l3',
+        note: 'Muscles note',
+      );
+
+      await service.saveNote(
+        courseId: 'anatomy-101',
+        lessonId: 'l3',
+        note: '   ',
+      );
+
+      expect(service.getNote(courseId: 'anatomy-101', lessonId: 'l3'), isNull);
     });
   });
 }

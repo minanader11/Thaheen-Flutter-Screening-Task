@@ -4,6 +4,7 @@ class CacheKeys {
   // LMS Settings & Progress keys
   static const String appSettings = "app_settings_json";
   static const String lessonProgressPrefix = "lesson_progress_";
+  static const String lessonNotePrefix = "lesson_note_";
   static const String lastWatched = "last_watched_lesson";
 
   /// Legacy/auth cache keys
@@ -17,5 +18,10 @@ class CacheKeys {
       return "$lessonProgressPrefix${courseId}_$lessonId";
     }
     return "$lessonProgressPrefix$lessonId";
+  }
+
+  /// Helper method to generate note cache key for a specific lesson in a course.
+  static String lessonNote(String courseId, String lessonId) {
+    return "$lessonNotePrefix${courseId}_$lessonId";
   }
 }
