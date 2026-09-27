@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:LJF_admin/core/config/api_config.dart';
-import 'package:LJF_admin/core/get_it/injection.dart';
-import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_handler_impl.dart';
+import 'package:Thaheen/core/config/api_config.dart';
+import 'package:Thaheen/core/get_it/injection.dart';
+import 'package:Thaheen/core/networking/refresh_token_handler/refresh_token_handler_impl.dart';
 import 'package:dio/dio.dart';
-import 'package:LJF_admin/core/constants/cache_keys.dart';
-import 'package:LJF_admin/core/local_storage/secure_storage.dart';
-import 'package:LJF_admin/core/networking/interceptors/interceptor_handler.dart';
+import 'package:Thaheen/core/constants/cache_keys.dart';
+import 'package:Thaheen/core/local_storage/secure_storage.dart';
+import 'package:Thaheen/core/networking/interceptors/interceptor_handler.dart';
 import 'package:injectable/injectable.dart';
 @LazySingleton(as: InterceptorsHandler)
 class InterceptorHandlerImp extends InterceptorsHandler {

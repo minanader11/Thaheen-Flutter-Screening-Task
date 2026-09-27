@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:LJF_admin/core/lesson_rules.dart';
-import 'package:LJF_admin/features/courses/model/course_model.dart';
-import 'package:LJF_admin/features/courses/model/lesson_model.dart';
-import 'package:LJF_admin/features/courses/model/lesson_progress_model.dart';
-import 'package:LJF_admin/features/courses/model/section_model.dart';
+import 'package:Thaheen/core/lesson_rules.dart';
+import 'package:Thaheen/features/courses/model/course_model.dart';
+import 'package:Thaheen/features/courses/model/lesson_model.dart';
+import 'package:Thaheen/features/courses/model/lesson_progress_model.dart';
+import 'package:Thaheen/features/courses/model/section_model.dart';
 
 void main() {
   group('1. isLessonComplete', () {

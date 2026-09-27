@@ -1,5 +1,5 @@
 
-import 'package:LJF_admin/core/networking/error_handle/error_handler_entity.dart';
+import 'package:Thaheen/core/networking/error_handle/error_handler_entity.dart';
 
 class ApiResult<T> {
   final T? data;

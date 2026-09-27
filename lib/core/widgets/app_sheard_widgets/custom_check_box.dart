@@ -1,4 +1,4 @@
-import 'package:LJF_admin/core/styles/colors.dart';
+import 'package:Thaheen/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class SmallRoundedCheckbox extends StatelessWidget {

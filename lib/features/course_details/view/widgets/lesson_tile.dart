@@ -215,7 +215,7 @@ class LessonTile extends StatelessWidget {
                     constraints: BoxConstraints.tight(Size(28.r, 28.r)),
                     icon: Icon(
                       Icons.note_alt_outlined,
-                      size: 16.r,
+                      size: 24.r,
                       color: ColorManager.primary,
                     ),
                     tooltip: s.lessonNotes,

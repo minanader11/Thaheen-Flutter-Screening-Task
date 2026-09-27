@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+import 'package:Thaheen/core/widgets/other/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:LJF_admin/core/styles/colors.dart';
-import 'package:LJF_admin/core/styles/styles.dart';
+import 'package:Thaheen/core/styles/colors.dart';
+import 'package:Thaheen/core/styles/styles.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;

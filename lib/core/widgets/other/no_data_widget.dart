@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:LJF_admin/core/styles/colors.dart';
-import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+import 'package:Thaheen/core/styles/colors.dart';
+import 'package:Thaheen/core/widgets/other/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NoDataWidget extends StatelessWidget {
@@ -27,7 +27,7 @@ class NoDataWidget extends StatelessWidget {
             // ),
             SizedBox(height: 20.h),
             CustomText(
-              text: "There is No $title ",
+              text: "$title ",
               fontWeight: FontWeight.bold,
               fontSize: 14,
               color: ColorManager.purple,

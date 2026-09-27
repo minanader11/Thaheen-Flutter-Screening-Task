@@ -1,8 +1,8 @@
-// import 'package:LJF_admin/core/constants/icons_paths.dart';
-// import 'package:LJF_admin/core/styles/colors.dart';
-// import 'package:LJF_admin/core/styles/styles.dart';
-// import 'package:LJF_admin/core/widgets/other/custom_text.dart';
-// import 'package:LJF_admin/core/widgets/other/image_helper.dart';
+// import 'package:Thaheen/core/constants/icons_paths.dart';
+// import 'package:Thaheen/core/styles/colors.dart';
+// import 'package:Thaheen/core/styles/styles.dart';
+// import 'package:Thaheen/core/widgets/other/custom_text.dart';
+// import 'package:Thaheen/core/widgets/other/image_helper.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 //

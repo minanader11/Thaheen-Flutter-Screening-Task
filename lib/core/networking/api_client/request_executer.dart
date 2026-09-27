@@ -1,10 +1,10 @@
 import 'dart:developer';
-import 'package:LJF_admin/core/config/api_config.dart';
-import 'package:LJF_admin/core/get_it/injection.dart';
-import 'package:LJF_admin/core/networking/api_client/request_strategy.dart';
-import 'package:LJF_admin/core/networking/api_result/api_result.dart';
-import 'package:LJF_admin/core/networking/dio_helper/dio_helper.dart';
-import 'package:LJF_admin/core/networking/error_handle/error_parser.dart';
+import 'package:Thaheen/core/config/api_config.dart';
+import 'package:Thaheen/core/get_it/injection.dart';
+import 'package:Thaheen/core/networking/api_client/request_strategy.dart';
+import 'package:Thaheen/core/networking/api_result/api_result.dart';
+import 'package:Thaheen/core/networking/dio_helper/dio_helper.dart';
+import 'package:Thaheen/core/networking/error_handle/error_parser.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 @module

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:LJF_admin/core/network/api_result.dart';
+import 'package:Thaheen/core/network/api_result.dart';
 
 void main() {
   group('ApiResult', () {

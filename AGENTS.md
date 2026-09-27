@@ -743,7 +743,7 @@ Caught during review of the first three screens; treat these as binding for anyt
 
 ## 16. App bootstrap — `main.dart` & `my_app.dart`
 
-The current `main.dart`/`my_app.dart` are copy-pasted from the admin project (LJF_admin) and still reference that project's features (`AdminCubit`, `JobOrderCubit`, `JobOrderFormScreen`), a commented-out dead first draft, `Environment.test`/API config that doesn't apply here (no backend), and the default Flutter counter boilerplate (`MyHomePage`). All of that gets removed, not kept commented out.
+The current `main.dart`/`my_app.dart` are copy-pasted from the admin project (Thaheen) and still reference that project's features (`AdminCubit`, `JobOrderCubit`, `JobOrderFormScreen`), a commented-out dead first draft, `Environment.test`/API config that doesn't apply here (no backend), and the default Flutter counter boilerplate (`MyHomePage`). All of that gets removed, not kept commented out.
 
 Routing follows the pattern from the working `pickngo` project — named routes via `Routes`/`AppRouter.generateRoute` plus a DI-registered `navigatorKey`, not a bare `home:` widget. This also satisfies the task's "Navigation with go_router or Navigator 2.0" requirement (named `onGenerateRoute` routing is the Navigator 1.0-named-routes approach; swap for `go_router` later without touching any screen if that's ever preferred — screens never construct each other directly either way).
 

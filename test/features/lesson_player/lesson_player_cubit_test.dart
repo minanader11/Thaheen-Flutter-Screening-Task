@@ -1,19 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:LJF_admin/core/cache/cache_helper.dart';
-import 'package:LJF_admin/core/network/api_result.dart';
-import 'package:LJF_admin/core/network/get_state.dart';
-import 'package:LJF_admin/core/services/progress_local_service.dart';
-import 'package:LJF_admin/core/settings/model/app_settings_model.dart';
-import 'package:LJF_admin/core/settings/repo/settings_repo.dart';
-import 'package:LJF_admin/core/settings/view_model/settings_cubit.dart';
-import 'package:LJF_admin/features/courses/model/course_model.dart';
-import 'package:LJF_admin/features/courses/model/lesson_model.dart';
-import 'package:LJF_admin/features/courses/model/lesson_progress_model.dart';
-import 'package:LJF_admin/features/courses/model/section_model.dart';
-import 'package:LJF_admin/features/courses/repo/courses_repo.dart';
-import 'package:LJF_admin/features/lesson_player/view_model/lesson_player_cubit.dart';
-import 'package:LJF_admin/features/lesson_player/view_model/lesson_player_state.dart';
+import 'package:Thaheen/core/cache/cache_helper.dart';
+import 'package:Thaheen/core/network/api_result.dart';
+import 'package:Thaheen/core/network/get_state.dart';
+import 'package:Thaheen/core/services/progress_local_service.dart';
+import 'package:Thaheen/core/settings/model/app_settings_model.dart';
+import 'package:Thaheen/core/settings/repo/settings_repo.dart';
+import 'package:Thaheen/core/settings/view_model/settings_cubit.dart';
+import 'package:Thaheen/features/courses/model/course_model.dart';
+import 'package:Thaheen/features/courses/model/lesson_model.dart';
+import 'package:Thaheen/features/courses/model/lesson_progress_model.dart';
+import 'package:Thaheen/features/courses/model/section_model.dart';
+import 'package:Thaheen/features/courses/repo/courses_repo.dart';
+import 'package:Thaheen/features/lesson_player/view_model/lesson_player_cubit.dart';
+import 'package:Thaheen/features/lesson_player/view_model/lesson_player_state.dart';
 
 class FakeSettingsRepo implements SettingsRepo {
   AppSettingsModel settings = const AppSettingsModel();

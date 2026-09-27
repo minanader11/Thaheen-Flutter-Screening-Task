@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:LJF_admin/core/styles/colors.dart';
-import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+import 'package:Thaheen/core/styles/colors.dart';
+import 'package:Thaheen/core/widgets/other/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomErrorWidget extends StatelessWidget {

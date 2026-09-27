@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:LJF_admin/core/localization/generated/l10n.dart';
-import 'package:LJF_admin/core/settings/model/app_settings_model.dart';
+import 'package:Thaheen/core/localization/generated/l10n.dart';
+import 'package:Thaheen/core/settings/model/app_settings_model.dart';
 
 void main() {
   group('LMS Localization Tests', () {

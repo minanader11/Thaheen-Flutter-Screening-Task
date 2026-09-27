@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:LJF_admin/core/constants/asset_paths.dart';
-import 'package:LJF_admin/core/routing/routes.dart';
-import 'package:LJF_admin/core/widgets/other/image_helper.dart';
-import 'package:LJF_admin/features/splash/view/screen/splash_screen.dart';
+import 'package:Thaheen/core/constants/asset_paths.dart';
+import 'package:Thaheen/core/routing/routes.dart';
+import 'package:Thaheen/core/widgets/other/image_helper.dart';
+import 'package:Thaheen/features/splash/view/screen/splash_screen.dart';
 
 void main() {
   Widget buildTestableWidget({

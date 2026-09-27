@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:LJF_admin/core/cache/cache_helper.dart';
-import 'package:LJF_admin/core/cache/cache_keys.dart';
-import 'package:LJF_admin/core/services/lesson_notes_service.dart';
-import 'package:LJF_admin/core/services/progress_local_service.dart';
-import 'package:LJF_admin/features/courses/model/lesson_progress_model.dart';
+import 'package:Thaheen/core/cache/cache_helper.dart';
+import 'package:Thaheen/core/cache/cache_keys.dart';
+import 'package:Thaheen/core/services/lesson_notes_service.dart';
+import 'package:Thaheen/core/services/progress_local_service.dart';
+import 'package:Thaheen/features/courses/model/lesson_progress_model.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

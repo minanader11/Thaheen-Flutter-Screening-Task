@@ -13,45 +13,45 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:LJF_admin/core/cache/cache_helper.dart' as _i1054;
-import 'package:LJF_admin/core/config/api_config.dart' as _i218;
-import 'package:LJF_admin/core/config/production_config.dart' as _i872;
-import 'package:LJF_admin/core/config/test_api_config.dart' as _i340;
-import 'package:LJF_admin/core/di/navigation_module.dart' as _i723;
-import 'package:LJF_admin/core/get_it/local_storage_di/cache_helper_di.dart'
+import 'package:Thaheen/core/cache/cache_helper.dart' as _i1054;
+import 'package:Thaheen/core/config/api_config.dart' as _i218;
+import 'package:Thaheen/core/config/production_config.dart' as _i872;
+import 'package:Thaheen/core/config/test_api_config.dart' as _i340;
+import 'package:Thaheen/core/di/navigation_module.dart' as _i723;
+import 'package:Thaheen/core/get_it/local_storage_di/cache_helper_di.dart'
     as _i215;
-import 'package:LJF_admin/core/localization/localization_cubit/localization_cubit.dart'
+import 'package:Thaheen/core/localization/localization_cubit/localization_cubit.dart'
     as _i43;
-import 'package:LJF_admin/core/networking/api_client/api_client.dart' as _i955;
-import 'package:LJF_admin/core/networking/api_client/request_executer.dart'
+import 'package:Thaheen/core/networking/api_client/api_client.dart' as _i955;
+import 'package:Thaheen/core/networking/api_client/request_executer.dart'
     as _i576;
-import 'package:LJF_admin/core/networking/dio_helper/dio_helper.dart' as _i717;
-import 'package:LJF_admin/core/networking/error_handle/dio_error_parser.dart'
+import 'package:Thaheen/core/networking/dio_helper/dio_helper.dart' as _i717;
+import 'package:Thaheen/core/networking/error_handle/dio_error_parser.dart'
     as _i610;
-import 'package:LJF_admin/core/networking/error_handle/error_parser.dart'
+import 'package:Thaheen/core/networking/error_handle/error_parser.dart'
     as _i725;
-import 'package:LJF_admin/core/networking/interceptors/interceptor_handler.dart'
+import 'package:Thaheen/core/networking/interceptors/interceptor_handler.dart'
     as _i47;
-import 'package:LJF_admin/core/networking/interceptors/interceptor_handler_imp.dart'
+import 'package:Thaheen/core/networking/interceptors/interceptor_handler_imp.dart'
     as _i737;
-import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_handler_impl.dart'
+import 'package:Thaheen/core/networking/refresh_token_handler/refresh_token_handler_impl.dart'
     as _i768;
-import 'package:LJF_admin/core/networking/refresh_token_handler/refresh_token_hanlder.dart'
+import 'package:Thaheen/core/networking/refresh_token_handler/refresh_token_hanlder.dart'
     as _i886;
-import 'package:LJF_admin/core/services/lesson_notes_service.dart' as _i772;
-import 'package:LJF_admin/core/services/progress_local_service.dart' as _i353;
-import 'package:LJF_admin/core/settings/repo/settings_repo.dart' as _i650;
-import 'package:LJF_admin/core/settings/repo/settings_repo_impl.dart' as _i657;
-import 'package:LJF_admin/core/settings/view_model/settings_cubit.dart'
+import 'package:Thaheen/core/services/lesson_notes_service.dart' as _i772;
+import 'package:Thaheen/core/services/progress_local_service.dart' as _i353;
+import 'package:Thaheen/core/settings/repo/settings_repo.dart' as _i650;
+import 'package:Thaheen/core/settings/repo/settings_repo_impl.dart' as _i657;
+import 'package:Thaheen/core/settings/view_model/settings_cubit.dart'
     as _i181;
-import 'package:LJF_admin/features/course_details/view_model/course_details_cubit.dart'
+import 'package:Thaheen/features/course_details/view_model/course_details_cubit.dart'
     as _i887;
-import 'package:LJF_admin/features/courses/repo/courses_repo.dart' as _i726;
-import 'package:LJF_admin/features/courses/repo/courses_repo_impl.dart'
+import 'package:Thaheen/features/courses/repo/courses_repo.dart' as _i726;
+import 'package:Thaheen/features/courses/repo/courses_repo_impl.dart'
     as _i978;
-import 'package:LJF_admin/features/courses/view_model/courses_cubit.dart'
+import 'package:Thaheen/features/courses/view_model/courses_cubit.dart'
     as _i63;
-import 'package:LJF_admin/features/lesson_player/view_model/lesson_player_cubit.dart'
+import 'package:Thaheen/features/lesson_player/view_model/lesson_player_cubit.dart'
     as _i833;
 
 const String _test = 'test';

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:LJF_admin/core/config/api_config.dart';
-import 'package:LJF_admin/core/networking/interceptors/interceptor_handler.dart';
+import 'package:Thaheen/core/config/api_config.dart';
+import 'package:Thaheen/core/networking/interceptors/interceptor_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 @lazySingleton

@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:LJF_admin/core/network/api_result.dart';
-import 'package:LJF_admin/core/network/get_state.dart';
-import 'package:LJF_admin/features/course_details/view_model/course_details_cubit.dart';
-import 'package:LJF_admin/features/course_details/view_model/course_details_state.dart';
-import 'package:LJF_admin/features/courses/model/course_model.dart';
-import 'package:LJF_admin/features/courses/repo/courses_repo.dart';
+import 'package:Thaheen/core/network/api_result.dart';
+import 'package:Thaheen/core/network/get_state.dart';
+import 'package:Thaheen/features/course_details/view_model/course_details_cubit.dart';
+import 'package:Thaheen/features/course_details/view_model/course_details_state.dart';
+import 'package:Thaheen/features/courses/model/course_model.dart';
+import 'package:Thaheen/features/courses/repo/courses_repo.dart';
 
 class FakeCoursesRepo implements CoursesRepo {
   ApiResult<CourseModel> mockCourseResult = const ApiResult.failure('Not found');

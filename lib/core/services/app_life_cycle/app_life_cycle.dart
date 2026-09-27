@@ -1,6 +1,6 @@
-// import 'package:LJF_admin/core/localization/generated/l10n.dart';
-// import 'package:LJF_admin/core/services/connectivity_check/cubit/connectivity_cubit.dart';
-// import 'package:LJF_admin/core/widgets/other/custom_text.dart';
+// import 'package:Thaheen/core/localization/generated/l10n.dart';
+// import 'package:Thaheen/core/services/connectivity_check/cubit/connectivity_cubit.dart';
+// import 'package:Thaheen/core/widgets/other/custom_text.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 //
